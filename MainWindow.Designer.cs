@@ -85,50 +85,51 @@ namespace VozovyPark
             this.labelUzivateleSpravaUzivatelu = new System.Windows.Forms.Label();
             this.labelUzivateleSeznamUzivatelu = new System.Windows.Forms.Label();
             this.listBoxUzivateleSeznamUzivatelu = new System.Windows.Forms.ListBox();
-            this.buttonUzivateleUpravitUzivatele = new System.Windows.Forms.Button();
-            this.buttonUzivatelePridatUzivatele = new System.Windows.Forms.Button();
-            this.buttonUzivateleOdebratUzivatele = new System.Windows.Forms.Button();
+            this.buttonUzivateleUpravit = new System.Windows.Forms.Button();
+            this.buttonUzivatelePridat = new System.Windows.Forms.Button();
+            this.buttonUzivateleOdebrat = new System.Windows.Forms.Button();
+            this.groupBoxUzivateleDetail = new System.Windows.Forms.GroupBox();
+            this.checkBoxUzivateleAdministrator = new System.Windows.Forms.CheckBox();
+            this.buttonUzivatelePotvrdit = new System.Windows.Forms.Button();
+            this.buttonUzivateleZrusit = new System.Windows.Forms.Button();
+            this.checkBoxUzivateleVynutitZmenuHesla = new System.Windows.Forms.CheckBox();
             this.labelUzivateleNaposledyPrihlasen = new System.Windows.Forms.Label();
             this.labelUzivateleJmeno = new System.Windows.Forms.Label();
-            this.textBoxUzivateleJmeno = new System.Windows.Forms.TextBox();
             this.labelUzivatelePrijmeni = new System.Windows.Forms.Label();
-            this.textBoxUzivatelePrijmeni = new System.Windows.Forms.TextBox();
             this.labelUzivateleJmenoUzivatele = new System.Windows.Forms.Label();
             this.textBoxUzivateleJmenoUzivatele = new System.Windows.Forms.TextBox();
-            this.checkBoxUzivateleVynutitZmenuHesla = new System.Windows.Forms.CheckBox();
-            this.buttonUzivateleZrusitUzivatele = new System.Windows.Forms.Button();
-            this.buttonUzivatelePotvrditUzivatele = new System.Windows.Forms.Button();
+            this.textBoxUzivatelePrijmeni = new System.Windows.Forms.TextBox();
+            this.textBoxUzivateleJmeno = new System.Windows.Forms.TextBox();
             this.panelSpravaVozidel = new System.Windows.Forms.Panel();
-            this.maskedTextBoxVozidlaSPZ = new System.Windows.Forms.MaskedTextBox();
             this.buttonVozidlaZpet = new System.Windows.Forms.Button();
             this.labelVozidlaSpravaVozidel = new System.Windows.Forms.Label();
             this.labelVozidlaSeznamVozidel = new System.Windows.Forms.Label();
             this.treeViewVozidlaSeznamVozidel = new System.Windows.Forms.TreeView();
-            this.buttonVozidlaUpravitVozidlo = new System.Windows.Forms.Button();
-            this.buttonVozidlaPridatVozidlo = new System.Windows.Forms.Button();
-            this.buttonVozidlaOdebratVozidlo = new System.Windows.Forms.Button();
+            this.buttonVozidlaUpravit = new System.Windows.Forms.Button();
+            this.buttonVozidlaPridat = new System.Windows.Forms.Button();
+            this.buttonVozidlaOdebrat = new System.Windows.Forms.Button();
             this.buttonVozidlaServisniZaznamy = new System.Windows.Forms.Button();
+            this.groupBoxVozidlaDetail = new System.Windows.Forms.GroupBox();
+            this.maskedTextBoxVozidlaSPZ = new System.Windows.Forms.MaskedTextBox();
             this.labelVozidlaSPZ = new System.Windows.Forms.Label();
             this.labelVozidlaVyrobce = new System.Windows.Forms.Label();
+            this.labelVozidlaModel = new System.Windows.Forms.Label();
+            this.labelVozidlaTyp = new System.Windows.Forms.Label();
+            this.labelVozidlaSpotreba = new System.Windows.Forms.Label();
             this.listBoxVozidlaVyrobce = new System.Windows.Forms.ListBox();
             this.textBoxVozidlaVyrobce = new System.Windows.Forms.TextBox();
+            this.buttonVozidlaZrusit = new System.Windows.Forms.Button();
+            this.buttonVozidlaPotvrdit = new System.Windows.Forms.Button();
+            this.buttonVozidlaPridatTyp = new System.Windows.Forms.Button();
+            this.buttonVozidlaPridatModel = new System.Windows.Forms.Button();
             this.buttonVozidlaPridatVyrobce = new System.Windows.Forms.Button();
-            this.labelVozidlaModel = new System.Windows.Forms.Label();
             this.listBoxVozidlaModel = new System.Windows.Forms.ListBox();
             this.textBoxVozidlaModel = new System.Windows.Forms.TextBox();
-            this.buttonVozidlaPridatModel = new System.Windows.Forms.Button();
-            this.labelVozidlaTyp = new System.Windows.Forms.Label();
-            this.listBoxVozidlaTyp = new System.Windows.Forms.ListBox();
             this.textBoxVozidlaTyp = new System.Windows.Forms.TextBox();
-            this.buttonVozidlaPridatTyp = new System.Windows.Forms.Button();
-            this.labelVozidlaSpotreba = new System.Windows.Forms.Label();
             this.numericUpDownVozidlaSpotreba = new System.Windows.Forms.NumericUpDown();
-            this.buttonVozidlaZrusitVozidlo = new System.Windows.Forms.Button();
-            this.buttonVozidlaPotvrditVozidlo = new System.Windows.Forms.Button();
+            this.listBoxVozidlaTyp = new System.Windows.Forms.ListBox();
             this.panelSpravaRezervaci = new System.Windows.Forms.Panel();
-            this.checkedListBoxRezervaceSeznamRezervaci = new System.Windows.Forms.CheckedListBox();
-            this.listViewRezervaceSeznamUzivatelu = new System.Windows.Forms.ListView();
-            this.treeViewRezervaceSeznamVozidel = new System.Windows.Forms.TreeView();
+            this.listBoxRezervaceSeznamRezervaci = new System.Windows.Forms.ListBox();
             this.treeViewRezervaceSeznamRezervaci = new System.Windows.Forms.TreeView();
             this.buttonRezervaceZpet = new System.Windows.Forms.Button();
             this.labelRezervaceRezervaci = new System.Windows.Forms.Label();
@@ -136,21 +137,24 @@ namespace VozovyPark
             this.checkBoxRezervaceZobrazitPredchozi = new System.Windows.Forms.CheckBox();
             this.radioButtonRezervacePodleVozidel = new System.Windows.Forms.RadioButton();
             this.radioButtonRezervacePodleUzivatelu = new System.Windows.Forms.RadioButton();
-            this.buttonRezervacePridatRezervaci = new System.Windows.Forms.Button();
+            this.buttonRezervacePridat = new System.Windows.Forms.Button();
             this.buttonRezervaceUpravit = new System.Windows.Forms.Button();
-            this.buttonRezervaceOdebratRezervaci = new System.Windows.Forms.Button();
-            this.labelRezervaceUzivatel = new System.Windows.Forms.Label();
-            this.textBoxRezervaceUzivatel = new System.Windows.Forms.TextBox();
-            this.buttonRezervaceHledat = new System.Windows.Forms.Button();
-            this.labeRezervaceVozidlo = new System.Windows.Forms.Label();
-            this.labelRezervaceRezervaceOd = new System.Windows.Forms.Label();
-            this.dateTimePickerRezervaceRezervaceOdDatum = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerRezervaceRezervaceOdCas = new System.Windows.Forms.DateTimePicker();
-            this.labelRezervaceRezervaceDo = new System.Windows.Forms.Label();
-            this.dateTimePickerRezervaceRezervaceDoDatum = new System.Windows.Forms.DateTimePicker();
-            this.dateTimePickerRezervaceRezervaceDoCas = new System.Windows.Forms.DateTimePicker();
+            this.buttonRezervaceOdebrat = new System.Windows.Forms.Button();
+            this.groupBoxRezervaceDetail = new System.Windows.Forms.GroupBox();
             this.buttonRezervaceZrusit = new System.Windows.Forms.Button();
+            this.treeViewRezervaceSeznamVozidel = new System.Windows.Forms.TreeView();
             this.buttonRezervacePotvrdit = new System.Windows.Forms.Button();
+            this.listBoxRezervaceSeznamUzivatelu = new System.Windows.Forms.ListBox();
+            this.labelRezervaceHledat = new System.Windows.Forms.Label();
+            this.labelRezervaceRezervaceOd = new System.Windows.Forms.Label();
+            this.labelRezervaceRezervaceDo = new System.Windows.Forms.Label();
+            this.labelRezervaceUzivatel = new System.Windows.Forms.Label();
+            this.labeRezervaceVozidlo = new System.Windows.Forms.Label();
+            this.textBoxRezervaceUzivatel = new System.Windows.Forms.TextBox();
+            this.dateTimePickerRezervaceRezervaceOdDatum = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerRezervaceRezervaceDoCas = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerRezervaceRezervaceDoDatum = new System.Windows.Forms.DateTimePicker();
+            this.dateTimePickerRezervaceRezervaceOdCas = new System.Windows.Forms.DateTimePicker();
             this.panelServisVozidla = new System.Windows.Forms.Panel();
             this.buttonServisZpet = new System.Windows.Forms.Button();
             this.labelServisVozidla = new System.Windows.Forms.Label();
@@ -179,9 +183,12 @@ namespace VozovyPark
             this.panelUzivatelRezervace.SuspendLayout();
             this.panelAdminHome.SuspendLayout();
             this.panelSpravaUzivatelu.SuspendLayout();
+            this.groupBoxUzivateleDetail.SuspendLayout();
             this.panelSpravaVozidel.SuspendLayout();
+            this.groupBoxVozidlaDetail.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVozidlaSpotreba)).BeginInit();
             this.panelSpravaRezervaci.SuspendLayout();
+            this.groupBoxRezervaceDetail.SuspendLayout();
             this.panelServisVozidla.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownServisCena)).BeginInit();
             this.SuspendLayout();
@@ -737,19 +744,10 @@ namespace VozovyPark
             this.panelSpravaUzivatelu.Controls.Add(this.labelUzivateleSpravaUzivatelu);
             this.panelSpravaUzivatelu.Controls.Add(this.labelUzivateleSeznamUzivatelu);
             this.panelSpravaUzivatelu.Controls.Add(this.listBoxUzivateleSeznamUzivatelu);
-            this.panelSpravaUzivatelu.Controls.Add(this.buttonUzivateleUpravitUzivatele);
-            this.panelSpravaUzivatelu.Controls.Add(this.buttonUzivatelePridatUzivatele);
-            this.panelSpravaUzivatelu.Controls.Add(this.buttonUzivateleOdebratUzivatele);
-            this.panelSpravaUzivatelu.Controls.Add(this.labelUzivateleNaposledyPrihlasen);
-            this.panelSpravaUzivatelu.Controls.Add(this.labelUzivateleJmeno);
-            this.panelSpravaUzivatelu.Controls.Add(this.textBoxUzivateleJmeno);
-            this.panelSpravaUzivatelu.Controls.Add(this.labelUzivatelePrijmeni);
-            this.panelSpravaUzivatelu.Controls.Add(this.textBoxUzivatelePrijmeni);
-            this.panelSpravaUzivatelu.Controls.Add(this.labelUzivateleJmenoUzivatele);
-            this.panelSpravaUzivatelu.Controls.Add(this.textBoxUzivateleJmenoUzivatele);
-            this.panelSpravaUzivatelu.Controls.Add(this.checkBoxUzivateleVynutitZmenuHesla);
-            this.panelSpravaUzivatelu.Controls.Add(this.buttonUzivateleZrusitUzivatele);
-            this.panelSpravaUzivatelu.Controls.Add(this.buttonUzivatelePotvrditUzivatele);
+            this.panelSpravaUzivatelu.Controls.Add(this.buttonUzivateleUpravit);
+            this.panelSpravaUzivatelu.Controls.Add(this.buttonUzivatelePridat);
+            this.panelSpravaUzivatelu.Controls.Add(this.buttonUzivateleOdebrat);
+            this.panelSpravaUzivatelu.Controls.Add(this.groupBoxUzivateleDetail);
             this.panelSpravaUzivatelu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSpravaUzivatelu.Location = new System.Drawing.Point(0, 0);
             this.panelSpravaUzivatelu.Name = "panelSpravaUzivatelu";
@@ -800,44 +798,110 @@ namespace VozovyPark
             // 
             // buttonUzivateleUpravitUzivatele
             // 
-            this.buttonUzivateleUpravitUzivatele.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonUzivateleUpravitUzivatele.Enabled = false;
-            this.buttonUzivateleUpravitUzivatele.Location = new System.Drawing.Point(162, 483);
-            this.buttonUzivateleUpravitUzivatele.Name = "buttonUzivateleUpravitUzivatele";
-            this.buttonUzivateleUpravitUzivatele.Size = new System.Drawing.Size(135, 25);
-            this.buttonUzivateleUpravitUzivatele.TabIndex = 3;
-            this.buttonUzivateleUpravitUzivatele.Text = "Upravit uživatele";
-            this.buttonUzivateleUpravitUzivatele.UseVisualStyleBackColor = true;
-            this.buttonUzivateleUpravitUzivatele.Click += new System.EventHandler(this.UzivateleOdemknoutZamknoutOvladani);
+            this.buttonUzivateleUpravit.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonUzivateleUpravit.Enabled = false;
+            this.buttonUzivateleUpravit.Location = new System.Drawing.Point(162, 483);
+            this.buttonUzivateleUpravit.Name = "buttonUzivateleUpravitUzivatele";
+            this.buttonUzivateleUpravit.Size = new System.Drawing.Size(135, 25);
+            this.buttonUzivateleUpravit.TabIndex = 3;
+            this.buttonUzivateleUpravit.Text = "Upravit uživatele";
+            this.buttonUzivateleUpravit.UseVisualStyleBackColor = true;
+            this.buttonUzivateleUpravit.Click += new System.EventHandler(this.UzivateleOdemknoutZamknoutOvladani);
             // 
             // buttonUzivatelePridatUzivatele
             // 
-            this.buttonUzivatelePridatUzivatele.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonUzivatelePridatUzivatele.Location = new System.Drawing.Point(304, 483);
-            this.buttonUzivatelePridatUzivatele.Name = "buttonUzivatelePridatUzivatele";
-            this.buttonUzivatelePridatUzivatele.Size = new System.Drawing.Size(135, 25);
-            this.buttonUzivatelePridatUzivatele.TabIndex = 2;
-            this.buttonUzivatelePridatUzivatele.Text = "Přidat uživatele";
-            this.buttonUzivatelePridatUzivatele.UseVisualStyleBackColor = true;
-            this.buttonUzivatelePridatUzivatele.Click += new System.EventHandler(this.UzivateleOdemknoutZamknoutOvladani);
+            this.buttonUzivatelePridat.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonUzivatelePridat.Location = new System.Drawing.Point(304, 483);
+            this.buttonUzivatelePridat.Name = "buttonUzivatelePridatUzivatele";
+            this.buttonUzivatelePridat.Size = new System.Drawing.Size(135, 25);
+            this.buttonUzivatelePridat.TabIndex = 2;
+            this.buttonUzivatelePridat.Text = "Přidat uživatele";
+            this.buttonUzivatelePridat.UseVisualStyleBackColor = true;
+            this.buttonUzivatelePridat.Click += new System.EventHandler(this.UzivateleOdemknoutZamknoutOvladani);
             // 
             // buttonUzivateleOdebratUzivatele
             // 
-            this.buttonUzivateleOdebratUzivatele.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonUzivateleOdebratUzivatele.Enabled = false;
-            this.buttonUzivateleOdebratUzivatele.Location = new System.Drawing.Point(162, 514);
-            this.buttonUzivateleOdebratUzivatele.Name = "buttonUzivateleOdebratUzivatele";
-            this.buttonUzivateleOdebratUzivatele.Size = new System.Drawing.Size(135, 25);
-            this.buttonUzivateleOdebratUzivatele.TabIndex = 4;
-            this.buttonUzivateleOdebratUzivatele.Text = "Odebrat uživatele";
-            this.buttonUzivateleOdebratUzivatele.UseVisualStyleBackColor = true;
-            this.buttonUzivateleOdebratUzivatele.Click += new System.EventHandler(this.ButtonUzivateleOdebratUzivatele_Click);
+            this.buttonUzivateleOdebrat.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonUzivateleOdebrat.Enabled = false;
+            this.buttonUzivateleOdebrat.Location = new System.Drawing.Point(162, 514);
+            this.buttonUzivateleOdebrat.Name = "buttonUzivateleOdebratUzivatele";
+            this.buttonUzivateleOdebrat.Size = new System.Drawing.Size(135, 25);
+            this.buttonUzivateleOdebrat.TabIndex = 4;
+            this.buttonUzivateleOdebrat.Text = "Odebrat uživatele";
+            this.buttonUzivateleOdebrat.UseVisualStyleBackColor = true;
+            this.buttonUzivateleOdebrat.Click += new System.EventHandler(this.ButtonUzivateleOdebratUzivatele_Click);
+            // 
+            // groupBoxUzivateleDetail
+            // 
+            this.groupBoxUzivateleDetail.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBoxUzivateleDetail.Controls.Add(this.checkBoxUzivateleAdministrator);
+            this.groupBoxUzivateleDetail.Controls.Add(this.buttonUzivatelePotvrdit);
+            this.groupBoxUzivateleDetail.Controls.Add(this.buttonUzivateleZrusit);
+            this.groupBoxUzivateleDetail.Controls.Add(this.checkBoxUzivateleVynutitZmenuHesla);
+            this.groupBoxUzivateleDetail.Controls.Add(this.labelUzivateleNaposledyPrihlasen);
+            this.groupBoxUzivateleDetail.Controls.Add(this.labelUzivateleJmeno);
+            this.groupBoxUzivateleDetail.Controls.Add(this.labelUzivatelePrijmeni);
+            this.groupBoxUzivateleDetail.Controls.Add(this.labelUzivateleJmenoUzivatele);
+            this.groupBoxUzivateleDetail.Controls.Add(this.textBoxUzivateleJmenoUzivatele);
+            this.groupBoxUzivateleDetail.Controls.Add(this.textBoxUzivatelePrijmeni);
+            this.groupBoxUzivateleDetail.Controls.Add(this.textBoxUzivateleJmeno);
+            this.groupBoxUzivateleDetail.Enabled = false;
+            this.groupBoxUzivateleDetail.Location = new System.Drawing.Point(506, 159);
+            this.groupBoxUzivateleDetail.Name = "groupBoxUzivateleDetail";
+            this.groupBoxUzivateleDetail.Size = new System.Drawing.Size(365, 320);
+            this.groupBoxUzivateleDetail.TabIndex = 0;
+            this.groupBoxUzivateleDetail.TabStop = false;
+            this.groupBoxUzivateleDetail.Text = "Detail:";
+            // 
+            // checkBoxUzivateleAdministrator
+            // 
+            this.checkBoxUzivateleAdministrator.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.checkBoxUzivateleAdministrator.AutoSize = true;
+            this.checkBoxUzivateleAdministrator.Location = new System.Drawing.Point(167, 176);
+            this.checkBoxUzivateleAdministrator.Name = "checkBoxUzivateleAdministrator";
+            this.checkBoxUzivateleAdministrator.Size = new System.Drawing.Size(114, 22);
+            this.checkBoxUzivateleAdministrator.TabIndex = 11;
+            this.checkBoxUzivateleAdministrator.Text = "Administrátor";
+            this.checkBoxUzivateleAdministrator.UseVisualStyleBackColor = true;
+            // 
+            // buttonUzivatelePotvrditUzivatele
+            // 
+            this.buttonUzivatelePotvrdit.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonUzivatelePotvrdit.Location = new System.Drawing.Point(265, 223);
+            this.buttonUzivatelePotvrdit.Name = "buttonUzivatelePotvrditUzivatele";
+            this.buttonUzivatelePotvrdit.Size = new System.Drawing.Size(75, 25);
+            this.buttonUzivatelePotvrdit.TabIndex = 9;
+            this.buttonUzivatelePotvrdit.Text = "Potvrdit";
+            this.buttonUzivatelePotvrdit.UseVisualStyleBackColor = true;
+            this.buttonUzivatelePotvrdit.Click += new System.EventHandler(this.ButtonUzivatelePotvrditUzivatele_Click);
+            // 
+            // buttonUzivateleZrusitUzivatele
+            // 
+            this.buttonUzivateleZrusit.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonUzivateleZrusit.Location = new System.Drawing.Point(184, 223);
+            this.buttonUzivateleZrusit.Name = "buttonUzivateleZrusitUzivatele";
+            this.buttonUzivateleZrusit.Size = new System.Drawing.Size(75, 25);
+            this.buttonUzivateleZrusit.TabIndex = 10;
+            this.buttonUzivateleZrusit.Text = "Zrušit";
+            this.buttonUzivateleZrusit.UseVisualStyleBackColor = true;
+            this.buttonUzivateleZrusit.Click += new System.EventHandler(this.ButtonUzivateleZrusitUzivatele_Click);
+            // 
+            // checkBoxUzivateleVynutitZmenuHesla
+            // 
+            this.checkBoxUzivateleVynutitZmenuHesla.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.checkBoxUzivateleVynutitZmenuHesla.AutoSize = true;
+            this.checkBoxUzivateleVynutitZmenuHesla.Location = new System.Drawing.Point(167, 148);
+            this.checkBoxUzivateleVynutitZmenuHesla.Name = "checkBoxUzivateleVynutitZmenuHesla";
+            this.checkBoxUzivateleVynutitZmenuHesla.Size = new System.Drawing.Size(158, 22);
+            this.checkBoxUzivateleVynutitZmenuHesla.TabIndex = 8;
+            this.checkBoxUzivateleVynutitZmenuHesla.Text = "Vynutit změnu hesla";
+            this.checkBoxUzivateleVynutitZmenuHesla.UseVisualStyleBackColor = true;
             // 
             // labelUzivateleNaposledyPrihlasen
             // 
             this.labelUzivateleNaposledyPrihlasen.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelUzivateleNaposledyPrihlasen.AutoSize = true;
-            this.labelUzivateleNaposledyPrihlasen.Location = new System.Drawing.Point(603, 191);
+            this.labelUzivateleNaposledyPrihlasen.Location = new System.Drawing.Point(10, 33);
             this.labelUzivateleNaposledyPrihlasen.Name = "labelUzivateleNaposledyPrihlasen";
             this.labelUzivateleNaposledyPrihlasen.Size = new System.Drawing.Size(145, 18);
             this.labelUzivateleNaposledyPrihlasen.TabIndex = 0;
@@ -847,49 +911,27 @@ namespace VozovyPark
             // 
             this.labelUzivateleJmeno.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelUzivateleJmeno.AutoSize = true;
-            this.labelUzivateleJmeno.Location = new System.Drawing.Point(603, 220);
+            this.labelUzivateleJmeno.Location = new System.Drawing.Point(97, 61);
             this.labelUzivateleJmeno.Name = "labelUzivateleJmeno";
             this.labelUzivateleJmeno.Size = new System.Drawing.Size(58, 18);
             this.labelUzivateleJmeno.TabIndex = 0;
             this.labelUzivateleJmeno.Text = "Jméno:";
             // 
-            // textBoxUzivateleJmeno
-            // 
-            this.textBoxUzivateleJmeno.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxUzivateleJmeno.Enabled = false;
-            this.textBoxUzivateleJmeno.Location = new System.Drawing.Point(673, 217);
-            this.textBoxUzivateleJmeno.MaxLength = 64;
-            this.textBoxUzivateleJmeno.Name = "textBoxUzivateleJmeno";
-            this.textBoxUzivateleJmeno.Size = new System.Drawing.Size(170, 24);
-            this.textBoxUzivateleJmeno.TabIndex = 5;
-            this.textBoxUzivateleJmeno.TextChanged += new System.EventHandler(this.UzivateleGeneratorUzivatelskehoJmena);
-            // 
             // labelUzivatelePrijmeni
             // 
             this.labelUzivatelePrijmeni.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelUzivatelePrijmeni.AutoSize = true;
-            this.labelUzivatelePrijmeni.Location = new System.Drawing.Point(596, 250);
+            this.labelUzivatelePrijmeni.Location = new System.Drawing.Point(90, 91);
             this.labelUzivatelePrijmeni.Name = "labelUzivatelePrijmeni";
             this.labelUzivatelePrijmeni.Size = new System.Drawing.Size(65, 18);
             this.labelUzivatelePrijmeni.TabIndex = 0;
             this.labelUzivatelePrijmeni.Text = "Příjmení:";
             // 
-            // textBoxUzivatelePrijmeni
-            // 
-            this.textBoxUzivatelePrijmeni.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxUzivatelePrijmeni.Enabled = false;
-            this.textBoxUzivatelePrijmeni.Location = new System.Drawing.Point(673, 247);
-            this.textBoxUzivatelePrijmeni.MaxLength = 64;
-            this.textBoxUzivatelePrijmeni.Name = "textBoxUzivatelePrijmeni";
-            this.textBoxUzivatelePrijmeni.Size = new System.Drawing.Size(170, 24);
-            this.textBoxUzivatelePrijmeni.TabIndex = 6;
-            this.textBoxUzivatelePrijmeni.TextChanged += new System.EventHandler(this.UzivateleGeneratorUzivatelskehoJmena);
-            // 
             // labelUzivateleJmenoUzivatele
             // 
             this.labelUzivateleJmenoUzivatele.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelUzivateleJmenoUzivatele.AutoSize = true;
-            this.labelUzivateleJmenoUzivatele.Location = new System.Drawing.Point(528, 280);
+            this.labelUzivateleJmenoUzivatele.Location = new System.Drawing.Point(23, 121);
             this.labelUzivateleJmenoUzivatele.Name = "labelUzivateleJmenoUzivatele";
             this.labelUzivateleJmenoUzivatele.Size = new System.Drawing.Size(133, 18);
             this.labelUzivateleJmenoUzivatele.TabIndex = 0;
@@ -898,94 +940,49 @@ namespace VozovyPark
             // textBoxUzivateleJmenoUzivatele
             // 
             this.textBoxUzivateleJmenoUzivatele.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxUzivateleJmenoUzivatele.Enabled = false;
-            this.textBoxUzivateleJmenoUzivatele.Location = new System.Drawing.Point(673, 277);
+            this.textBoxUzivateleJmenoUzivatele.Location = new System.Drawing.Point(167, 118);
             this.textBoxUzivateleJmenoUzivatele.MaxLength = 64;
             this.textBoxUzivateleJmenoUzivatele.Name = "textBoxUzivateleJmenoUzivatele";
             this.textBoxUzivateleJmenoUzivatele.Size = new System.Drawing.Size(170, 24);
             this.textBoxUzivateleJmenoUzivatele.TabIndex = 7;
             // 
-            // checkBoxUzivateleVynutitZmenuHesla
+            // textBoxUzivatelePrijmeni
             // 
-            this.checkBoxUzivateleVynutitZmenuHesla.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkBoxUzivateleVynutitZmenuHesla.AutoSize = true;
-            this.checkBoxUzivateleVynutitZmenuHesla.Enabled = false;
-            this.checkBoxUzivateleVynutitZmenuHesla.Location = new System.Drawing.Point(673, 316);
-            this.checkBoxUzivateleVynutitZmenuHesla.Name = "checkBoxUzivateleVynutitZmenuHesla";
-            this.checkBoxUzivateleVynutitZmenuHesla.Size = new System.Drawing.Size(158, 22);
-            this.checkBoxUzivateleVynutitZmenuHesla.TabIndex = 8;
-            this.checkBoxUzivateleVynutitZmenuHesla.Text = "Vynutit změnu hesla";
-            this.checkBoxUzivateleVynutitZmenuHesla.UseVisualStyleBackColor = true;
+            this.textBoxUzivatelePrijmeni.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxUzivatelePrijmeni.Location = new System.Drawing.Point(167, 88);
+            this.textBoxUzivatelePrijmeni.MaxLength = 64;
+            this.textBoxUzivatelePrijmeni.Name = "textBoxUzivatelePrijmeni";
+            this.textBoxUzivatelePrijmeni.Size = new System.Drawing.Size(170, 24);
+            this.textBoxUzivatelePrijmeni.TabIndex = 6;
+            this.textBoxUzivatelePrijmeni.TextChanged += new System.EventHandler(this.UzivateleGeneratorUzivatelskehoJmena);
             // 
-            // buttonUzivateleZrusitUzivatele
+            // textBoxUzivateleJmeno
             // 
-            this.buttonUzivateleZrusitUzivatele.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonUzivateleZrusitUzivatele.Enabled = false;
-            this.buttonUzivateleZrusitUzivatele.Location = new System.Drawing.Point(690, 386);
-            this.buttonUzivateleZrusitUzivatele.Name = "buttonUzivateleZrusitUzivatele";
-            this.buttonUzivateleZrusitUzivatele.Size = new System.Drawing.Size(75, 25);
-            this.buttonUzivateleZrusitUzivatele.TabIndex = 10;
-            this.buttonUzivateleZrusitUzivatele.Text = "Zrušit";
-            this.buttonUzivateleZrusitUzivatele.UseVisualStyleBackColor = true;
-            this.buttonUzivateleZrusitUzivatele.Click += new System.EventHandler(this.ButtonUzivateleZrusitUzivatele_Click);
-            // 
-            // buttonUzivatelePotvrditUzivatele
-            // 
-            this.buttonUzivatelePotvrditUzivatele.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonUzivatelePotvrditUzivatele.Enabled = false;
-            this.buttonUzivatelePotvrditUzivatele.Location = new System.Drawing.Point(771, 386);
-            this.buttonUzivatelePotvrditUzivatele.Name = "buttonUzivatelePotvrditUzivatele";
-            this.buttonUzivatelePotvrditUzivatele.Size = new System.Drawing.Size(75, 25);
-            this.buttonUzivatelePotvrditUzivatele.TabIndex = 9;
-            this.buttonUzivatelePotvrditUzivatele.Text = "Potvrdit";
-            this.buttonUzivatelePotvrditUzivatele.UseVisualStyleBackColor = true;
-            this.buttonUzivatelePotvrditUzivatele.Click += new System.EventHandler(this.ButtonUzivatelePotvrditUzivatele_Click);
+            this.textBoxUzivateleJmeno.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxUzivateleJmeno.Location = new System.Drawing.Point(167, 58);
+            this.textBoxUzivateleJmeno.MaxLength = 64;
+            this.textBoxUzivateleJmeno.Name = "textBoxUzivateleJmeno";
+            this.textBoxUzivateleJmeno.Size = new System.Drawing.Size(170, 24);
+            this.textBoxUzivateleJmeno.TabIndex = 5;
+            this.textBoxUzivateleJmeno.TextChanged += new System.EventHandler(this.UzivateleGeneratorUzivatelskehoJmena);
             // 
             // panelSpravaVozidel
             // 
-            this.panelSpravaVozidel.Controls.Add(this.maskedTextBoxVozidlaSPZ);
             this.panelSpravaVozidel.Controls.Add(this.buttonVozidlaZpet);
             this.panelSpravaVozidel.Controls.Add(this.labelVozidlaSpravaVozidel);
             this.panelSpravaVozidel.Controls.Add(this.labelVozidlaSeznamVozidel);
             this.panelSpravaVozidel.Controls.Add(this.treeViewVozidlaSeznamVozidel);
-            this.panelSpravaVozidel.Controls.Add(this.buttonVozidlaUpravitVozidlo);
-            this.panelSpravaVozidel.Controls.Add(this.buttonVozidlaPridatVozidlo);
-            this.panelSpravaVozidel.Controls.Add(this.buttonVozidlaOdebratVozidlo);
+            this.panelSpravaVozidel.Controls.Add(this.buttonVozidlaUpravit);
+            this.panelSpravaVozidel.Controls.Add(this.buttonVozidlaPridat);
+            this.panelSpravaVozidel.Controls.Add(this.buttonVozidlaOdebrat);
             this.panelSpravaVozidel.Controls.Add(this.buttonVozidlaServisniZaznamy);
-            this.panelSpravaVozidel.Controls.Add(this.labelVozidlaSPZ);
-            this.panelSpravaVozidel.Controls.Add(this.labelVozidlaVyrobce);
-            this.panelSpravaVozidel.Controls.Add(this.listBoxVozidlaVyrobce);
-            this.panelSpravaVozidel.Controls.Add(this.textBoxVozidlaVyrobce);
-            this.panelSpravaVozidel.Controls.Add(this.buttonVozidlaPridatVyrobce);
-            this.panelSpravaVozidel.Controls.Add(this.labelVozidlaModel);
-            this.panelSpravaVozidel.Controls.Add(this.listBoxVozidlaModel);
-            this.panelSpravaVozidel.Controls.Add(this.textBoxVozidlaModel);
-            this.panelSpravaVozidel.Controls.Add(this.buttonVozidlaPridatModel);
-            this.panelSpravaVozidel.Controls.Add(this.labelVozidlaTyp);
-            this.panelSpravaVozidel.Controls.Add(this.listBoxVozidlaTyp);
-            this.panelSpravaVozidel.Controls.Add(this.textBoxVozidlaTyp);
-            this.panelSpravaVozidel.Controls.Add(this.buttonVozidlaPridatTyp);
-            this.panelSpravaVozidel.Controls.Add(this.labelVozidlaSpotreba);
-            this.panelSpravaVozidel.Controls.Add(this.numericUpDownVozidlaSpotreba);
-            this.panelSpravaVozidel.Controls.Add(this.buttonVozidlaZrusitVozidlo);
-            this.panelSpravaVozidel.Controls.Add(this.buttonVozidlaPotvrditVozidlo);
+            this.panelSpravaVozidel.Controls.Add(this.groupBoxVozidlaDetail);
             this.panelSpravaVozidel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelSpravaVozidel.Location = new System.Drawing.Point(0, 0);
             this.panelSpravaVozidel.Name = "panelSpravaVozidel";
             this.panelSpravaVozidel.Size = new System.Drawing.Size(984, 561);
             this.panelSpravaVozidel.TabIndex = 0;
             this.panelSpravaVozidel.Visible = false;
-            // 
-            // maskedTextBoxVozidlaSPZ
-            // 
-            this.maskedTextBoxVozidlaSPZ.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.maskedTextBoxVozidlaSPZ.AsciiOnly = true;
-            this.maskedTextBoxVozidlaSPZ.Enabled = false;
-            this.maskedTextBoxVozidlaSPZ.Location = new System.Drawing.Point(593, 144);
-            this.maskedTextBoxVozidlaSPZ.Mask = ">AAA 0000";
-            this.maskedTextBoxVozidlaSPZ.Name = "maskedTextBoxVozidlaSPZ";
-            this.maskedTextBoxVozidlaSPZ.Size = new System.Drawing.Size(87, 24);
-            this.maskedTextBoxVozidlaSPZ.TabIndex = 22;
             // 
             // buttonVozidlaZpet
             // 
@@ -1011,7 +1008,7 @@ namespace VozovyPark
             // 
             this.labelVozidlaSeznamVozidel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelVozidlaSeznamVozidel.AutoSize = true;
-            this.labelVozidlaSeznamVozidel.Location = new System.Drawing.Point(103, 147);
+            this.labelVozidlaSeznamVozidel.Location = new System.Drawing.Point(103, 120);
             this.labelVozidlaSeznamVozidel.Name = "labelVozidlaSeznamVozidel";
             this.labelVozidlaSeznamVozidel.Size = new System.Drawing.Size(117, 18);
             this.labelVozidlaSeznamVozidel.TabIndex = 0;
@@ -1022,7 +1019,7 @@ namespace VozovyPark
             this.treeViewVozidlaSeznamVozidel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.treeViewVozidlaSeznamVozidel.FullRowSelect = true;
             this.treeViewVozidlaSeznamVozidel.HideSelection = false;
-            this.treeViewVozidlaSeznamVozidel.Location = new System.Drawing.Point(106, 173);
+            this.treeViewVozidlaSeznamVozidel.Location = new System.Drawing.Point(106, 146);
             this.treeViewVozidlaSeznamVozidel.Name = "treeViewVozidlaSeznamVozidel";
             this.treeViewVozidlaSeznamVozidel.Size = new System.Drawing.Size(277, 292);
             this.treeViewVozidlaSeznamVozidel.TabIndex = 1;
@@ -1030,55 +1027,94 @@ namespace VozovyPark
             // 
             // buttonVozidlaUpravitVozidlo
             // 
-            this.buttonVozidlaUpravitVozidlo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonVozidlaUpravitVozidlo.Enabled = false;
-            this.buttonVozidlaUpravitVozidlo.Location = new System.Drawing.Point(106, 478);
-            this.buttonVozidlaUpravitVozidlo.Name = "buttonVozidlaUpravitVozidlo";
-            this.buttonVozidlaUpravitVozidlo.Size = new System.Drawing.Size(135, 25);
-            this.buttonVozidlaUpravitVozidlo.TabIndex = 3;
-            this.buttonVozidlaUpravitVozidlo.Text = "Upravit vozidlo";
-            this.buttonVozidlaUpravitVozidlo.UseVisualStyleBackColor = true;
-            this.buttonVozidlaUpravitVozidlo.Click += new System.EventHandler(this.VozidlaOdemknoutZamknoutOvladani);
+            this.buttonVozidlaUpravit.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonVozidlaUpravit.Enabled = false;
+            this.buttonVozidlaUpravit.Location = new System.Drawing.Point(106, 451);
+            this.buttonVozidlaUpravit.Name = "buttonVozidlaUpravitVozidlo";
+            this.buttonVozidlaUpravit.Size = new System.Drawing.Size(135, 25);
+            this.buttonVozidlaUpravit.TabIndex = 3;
+            this.buttonVozidlaUpravit.Text = "Upravit vozidlo";
+            this.buttonVozidlaUpravit.UseVisualStyleBackColor = true;
+            this.buttonVozidlaUpravit.Click += new System.EventHandler(this.VozidlaOdemknoutZamknoutOvladani);
             // 
             // buttonVozidlaPridatVozidlo
             // 
-            this.buttonVozidlaPridatVozidlo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonVozidlaPridatVozidlo.Location = new System.Drawing.Point(248, 478);
-            this.buttonVozidlaPridatVozidlo.Name = "buttonVozidlaPridatVozidlo";
-            this.buttonVozidlaPridatVozidlo.Size = new System.Drawing.Size(135, 25);
-            this.buttonVozidlaPridatVozidlo.TabIndex = 2;
-            this.buttonVozidlaPridatVozidlo.Text = "Přidat vozidlo";
-            this.buttonVozidlaPridatVozidlo.UseVisualStyleBackColor = true;
-            this.buttonVozidlaPridatVozidlo.Click += new System.EventHandler(this.VozidlaOdemknoutZamknoutOvladani);
+            this.buttonVozidlaPridat.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonVozidlaPridat.Location = new System.Drawing.Point(248, 451);
+            this.buttonVozidlaPridat.Name = "buttonVozidlaPridatVozidlo";
+            this.buttonVozidlaPridat.Size = new System.Drawing.Size(135, 25);
+            this.buttonVozidlaPridat.TabIndex = 2;
+            this.buttonVozidlaPridat.Text = "Přidat vozidlo";
+            this.buttonVozidlaPridat.UseVisualStyleBackColor = true;
+            this.buttonVozidlaPridat.Click += new System.EventHandler(this.VozidlaOdemknoutZamknoutOvladani);
             // 
             // buttonVozidlaOdebratVozidlo
             // 
-            this.buttonVozidlaOdebratVozidlo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonVozidlaOdebratVozidlo.Enabled = false;
-            this.buttonVozidlaOdebratVozidlo.Location = new System.Drawing.Point(106, 509);
-            this.buttonVozidlaOdebratVozidlo.Name = "buttonVozidlaOdebratVozidlo";
-            this.buttonVozidlaOdebratVozidlo.Size = new System.Drawing.Size(135, 25);
-            this.buttonVozidlaOdebratVozidlo.TabIndex = 5;
-            this.buttonVozidlaOdebratVozidlo.Text = "Odebrat vozidlo";
-            this.buttonVozidlaOdebratVozidlo.UseVisualStyleBackColor = true;
-            this.buttonVozidlaOdebratVozidlo.Click += new System.EventHandler(this.ButtonVozidlaOdebratVozidlo_Click);
+            this.buttonVozidlaOdebrat.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonVozidlaOdebrat.Enabled = false;
+            this.buttonVozidlaOdebrat.Location = new System.Drawing.Point(106, 482);
+            this.buttonVozidlaOdebrat.Name = "buttonVozidlaOdebratVozidlo";
+            this.buttonVozidlaOdebrat.Size = new System.Drawing.Size(135, 25);
+            this.buttonVozidlaOdebrat.TabIndex = 5;
+            this.buttonVozidlaOdebrat.Text = "Odebrat vozidlo";
+            this.buttonVozidlaOdebrat.UseVisualStyleBackColor = true;
+            this.buttonVozidlaOdebrat.Click += new System.EventHandler(this.ButtonVozidlaOdebratVozidlo_Click);
             // 
             // buttonVozidlaServisniZaznamy
             // 
             this.buttonVozidlaServisniZaznamy.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.buttonVozidlaServisniZaznamy.Enabled = false;
-            this.buttonVozidlaServisniZaznamy.Location = new System.Drawing.Point(248, 509);
+            this.buttonVozidlaServisniZaznamy.Location = new System.Drawing.Point(248, 482);
             this.buttonVozidlaServisniZaznamy.Name = "buttonVozidlaServisniZaznamy";
             this.buttonVozidlaServisniZaznamy.Size = new System.Drawing.Size(135, 25);
             this.buttonVozidlaServisniZaznamy.TabIndex = 4;
             this.buttonVozidlaServisniZaznamy.Text = "Servisní záznamy";
             this.buttonVozidlaServisniZaznamy.UseVisualStyleBackColor = true;
             // 
+            // groupBoxVozidlaDetail
+            // 
+            this.groupBoxVozidlaDetail.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBoxVozidlaDetail.Controls.Add(this.maskedTextBoxVozidlaSPZ);
+            this.groupBoxVozidlaDetail.Controls.Add(this.labelVozidlaSPZ);
+            this.groupBoxVozidlaDetail.Controls.Add(this.labelVozidlaVyrobce);
+            this.groupBoxVozidlaDetail.Controls.Add(this.labelVozidlaModel);
+            this.groupBoxVozidlaDetail.Controls.Add(this.labelVozidlaTyp);
+            this.groupBoxVozidlaDetail.Controls.Add(this.labelVozidlaSpotreba);
+            this.groupBoxVozidlaDetail.Controls.Add(this.listBoxVozidlaVyrobce);
+            this.groupBoxVozidlaDetail.Controls.Add(this.textBoxVozidlaVyrobce);
+            this.groupBoxVozidlaDetail.Controls.Add(this.buttonVozidlaZrusit);
+            this.groupBoxVozidlaDetail.Controls.Add(this.buttonVozidlaPotvrdit);
+            this.groupBoxVozidlaDetail.Controls.Add(this.buttonVozidlaPridatTyp);
+            this.groupBoxVozidlaDetail.Controls.Add(this.buttonVozidlaPridatModel);
+            this.groupBoxVozidlaDetail.Controls.Add(this.buttonVozidlaPridatVyrobce);
+            this.groupBoxVozidlaDetail.Controls.Add(this.listBoxVozidlaModel);
+            this.groupBoxVozidlaDetail.Controls.Add(this.textBoxVozidlaModel);
+            this.groupBoxVozidlaDetail.Controls.Add(this.textBoxVozidlaTyp);
+            this.groupBoxVozidlaDetail.Controls.Add(this.numericUpDownVozidlaSpotreba);
+            this.groupBoxVozidlaDetail.Controls.Add(this.listBoxVozidlaTyp);
+            this.groupBoxVozidlaDetail.Enabled = false;
+            this.groupBoxVozidlaDetail.Location = new System.Drawing.Point(425, 120);
+            this.groupBoxVozidlaDetail.Name = "groupBoxVozidlaDetail";
+            this.groupBoxVozidlaDetail.Size = new System.Drawing.Size(452, 419);
+            this.groupBoxVozidlaDetail.TabIndex = 0;
+            this.groupBoxVozidlaDetail.TabStop = false;
+            this.groupBoxVozidlaDetail.Text = "Detail:";
+            // 
+            // maskedTextBoxVozidlaSPZ
+            // 
+            this.maskedTextBoxVozidlaSPZ.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.maskedTextBoxVozidlaSPZ.AsciiOnly = true;
+            this.maskedTextBoxVozidlaSPZ.Location = new System.Drawing.Point(168, 22);
+            this.maskedTextBoxVozidlaSPZ.Mask = ">AAA 0000";
+            this.maskedTextBoxVozidlaSPZ.Name = "maskedTextBoxVozidlaSPZ";
+            this.maskedTextBoxVozidlaSPZ.Size = new System.Drawing.Size(87, 24);
+            this.maskedTextBoxVozidlaSPZ.TabIndex = 22;
+            // 
             // labelVozidlaSPZ
             // 
             this.labelVozidlaSPZ.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelVozidlaSPZ.AutoSize = true;
-            this.labelVozidlaSPZ.Location = new System.Drawing.Point(550, 147);
+            this.labelVozidlaSPZ.Location = new System.Drawing.Point(121, 27);
             this.labelVozidlaSPZ.Name = "labelVozidlaSPZ";
             this.labelVozidlaSPZ.Size = new System.Drawing.Size(41, 18);
             this.labelVozidlaSPZ.TabIndex = 0;
@@ -1088,19 +1124,48 @@ namespace VozovyPark
             // 
             this.labelVozidlaVyrobce.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelVozidlaVyrobce.AutoSize = true;
-            this.labelVozidlaVyrobce.Location = new System.Drawing.Point(524, 179);
+            this.labelVozidlaVyrobce.Location = new System.Drawing.Point(96, 63);
             this.labelVozidlaVyrobce.Name = "labelVozidlaVyrobce";
             this.labelVozidlaVyrobce.Size = new System.Drawing.Size(66, 18);
             this.labelVozidlaVyrobce.TabIndex = 0;
             this.labelVozidlaVyrobce.Text = "Výrobce:";
             // 
+            // labelVozidlaModel
+            // 
+            this.labelVozidlaModel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelVozidlaModel.AutoSize = true;
+            this.labelVozidlaModel.Location = new System.Drawing.Point(109, 164);
+            this.labelVozidlaModel.Name = "labelVozidlaModel";
+            this.labelVozidlaModel.Size = new System.Drawing.Size(53, 18);
+            this.labelVozidlaModel.TabIndex = 0;
+            this.labelVozidlaModel.Text = "Model:";
+            // 
+            // labelVozidlaTyp
+            // 
+            this.labelVozidlaTyp.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelVozidlaTyp.AutoSize = true;
+            this.labelVozidlaTyp.Location = new System.Drawing.Point(124, 269);
+            this.labelVozidlaTyp.Name = "labelVozidlaTyp";
+            this.labelVozidlaTyp.Size = new System.Drawing.Size(36, 18);
+            this.labelVozidlaTyp.TabIndex = 0;
+            this.labelVozidlaTyp.Text = "Typ:";
+            // 
+            // labelVozidlaSpotreba
+            // 
+            this.labelVozidlaSpotreba.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelVozidlaSpotreba.AutoSize = true;
+            this.labelVozidlaSpotreba.Location = new System.Drawing.Point(17, 362);
+            this.labelVozidlaSpotreba.Name = "labelVozidlaSpotreba";
+            this.labelVozidlaSpotreba.Size = new System.Drawing.Size(145, 18);
+            this.labelVozidlaSpotreba.TabIndex = 0;
+            this.labelVozidlaSpotreba.Text = "Spotřeba na 100 km:";
+            // 
             // listBoxVozidlaVyrobce
             // 
             this.listBoxVozidlaVyrobce.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.listBoxVozidlaVyrobce.Enabled = false;
             this.listBoxVozidlaVyrobce.FormattingEnabled = true;
             this.listBoxVozidlaVyrobce.ItemHeight = 18;
-            this.listBoxVozidlaVyrobce.Location = new System.Drawing.Point(593, 179);
+            this.listBoxVozidlaVyrobce.Location = new System.Drawing.Point(168, 60);
             this.listBoxVozidlaVyrobce.Name = "listBoxVozidlaVyrobce";
             this.listBoxVozidlaVyrobce.Size = new System.Drawing.Size(170, 58);
             this.listBoxVozidlaVyrobce.TabIndex = 7;
@@ -1108,104 +1173,38 @@ namespace VozovyPark
             // textBoxVozidlaVyrobce
             // 
             this.textBoxVozidlaVyrobce.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxVozidlaVyrobce.Enabled = false;
-            this.textBoxVozidlaVyrobce.Location = new System.Drawing.Point(595, 243);
+            this.textBoxVozidlaVyrobce.Location = new System.Drawing.Point(168, 124);
             this.textBoxVozidlaVyrobce.MaxLength = 64;
             this.textBoxVozidlaVyrobce.Name = "textBoxVozidlaVyrobce";
             this.textBoxVozidlaVyrobce.Size = new System.Drawing.Size(170, 24);
             this.textBoxVozidlaVyrobce.TabIndex = 8;
             // 
-            // buttonVozidlaPridatVyrobce
+            // buttonVozidlaZrusitVozidlo
             // 
-            this.buttonVozidlaPridatVyrobce.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonVozidlaPridatVyrobce.Enabled = false;
-            this.buttonVozidlaPridatVyrobce.Location = new System.Drawing.Point(771, 243);
-            this.buttonVozidlaPridatVyrobce.Name = "buttonVozidlaPridatVyrobce";
-            this.buttonVozidlaPridatVyrobce.Size = new System.Drawing.Size(75, 25);
-            this.buttonVozidlaPridatVyrobce.TabIndex = 9;
-            this.buttonVozidlaPridatVyrobce.Text = "Přidat";
-            this.buttonVozidlaPridatVyrobce.UseVisualStyleBackColor = true;
-            this.buttonVozidlaPridatVyrobce.Click += new System.EventHandler(this.ButtonVozidlaPridatMoznost_Click);
+            this.buttonVozidlaZrusit.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonVozidlaZrusit.Location = new System.Drawing.Point(180, 390);
+            this.buttonVozidlaZrusit.Name = "buttonVozidlaZrusitVozidlo";
+            this.buttonVozidlaZrusit.Size = new System.Drawing.Size(75, 25);
+            this.buttonVozidlaZrusit.TabIndex = 18;
+            this.buttonVozidlaZrusit.Text = "Zrušit";
+            this.buttonVozidlaZrusit.UseVisualStyleBackColor = true;
+            this.buttonVozidlaZrusit.Click += new System.EventHandler(this.ButtonVozidlaZrusitVozidlo_Click);
             // 
-            // labelVozidlaModel
+            // buttonVozidlaPotvrditVozidlo
             // 
-            this.labelVozidlaModel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelVozidlaModel.AutoSize = true;
-            this.labelVozidlaModel.Location = new System.Drawing.Point(536, 286);
-            this.labelVozidlaModel.Name = "labelVozidlaModel";
-            this.labelVozidlaModel.Size = new System.Drawing.Size(53, 18);
-            this.labelVozidlaModel.TabIndex = 0;
-            this.labelVozidlaModel.Text = "Model:";
-            // 
-            // listBoxVozidlaModel
-            // 
-            this.listBoxVozidlaModel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.listBoxVozidlaModel.Enabled = false;
-            this.listBoxVozidlaModel.FormattingEnabled = true;
-            this.listBoxVozidlaModel.ItemHeight = 18;
-            this.listBoxVozidlaModel.Location = new System.Drawing.Point(593, 281);
-            this.listBoxVozidlaModel.Name = "listBoxVozidlaModel";
-            this.listBoxVozidlaModel.Size = new System.Drawing.Size(170, 58);
-            this.listBoxVozidlaModel.TabIndex = 10;
-            // 
-            // textBoxVozidlaModel
-            // 
-            this.textBoxVozidlaModel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxVozidlaModel.Enabled = false;
-            this.textBoxVozidlaModel.Location = new System.Drawing.Point(593, 345);
-            this.textBoxVozidlaModel.MaxLength = 64;
-            this.textBoxVozidlaModel.Name = "textBoxVozidlaModel";
-            this.textBoxVozidlaModel.Size = new System.Drawing.Size(170, 24);
-            this.textBoxVozidlaModel.TabIndex = 11;
-            // 
-            // buttonVozidlaPridatModel
-            // 
-            this.buttonVozidlaPridatModel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonVozidlaPridatModel.Enabled = false;
-            this.buttonVozidlaPridatModel.Location = new System.Drawing.Point(771, 344);
-            this.buttonVozidlaPridatModel.Name = "buttonVozidlaPridatModel";
-            this.buttonVozidlaPridatModel.Size = new System.Drawing.Size(75, 25);
-            this.buttonVozidlaPridatModel.TabIndex = 12;
-            this.buttonVozidlaPridatModel.Text = "Přidat";
-            this.buttonVozidlaPridatModel.UseVisualStyleBackColor = true;
-            this.buttonVozidlaPridatModel.Click += new System.EventHandler(this.ButtonVozidlaPridatMoznost_Click);
-            // 
-            // labelVozidlaTyp
-            // 
-            this.labelVozidlaTyp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelVozidlaTyp.AutoSize = true;
-            this.labelVozidlaTyp.Location = new System.Drawing.Point(551, 387);
-            this.labelVozidlaTyp.Name = "labelVozidlaTyp";
-            this.labelVozidlaTyp.Size = new System.Drawing.Size(36, 18);
-            this.labelVozidlaTyp.TabIndex = 0;
-            this.labelVozidlaTyp.Text = "Typ:";
-            // 
-            // listBoxVozidlaTyp
-            // 
-            this.listBoxVozidlaTyp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.listBoxVozidlaTyp.Enabled = false;
-            this.listBoxVozidlaTyp.FormattingEnabled = true;
-            this.listBoxVozidlaTyp.ItemHeight = 18;
-            this.listBoxVozidlaTyp.Location = new System.Drawing.Point(593, 384);
-            this.listBoxVozidlaTyp.Name = "listBoxVozidlaTyp";
-            this.listBoxVozidlaTyp.Size = new System.Drawing.Size(170, 58);
-            this.listBoxVozidlaTyp.TabIndex = 13;
-            // 
-            // textBoxVozidlaTyp
-            // 
-            this.textBoxVozidlaTyp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxVozidlaTyp.Enabled = false;
-            this.textBoxVozidlaTyp.Location = new System.Drawing.Point(593, 448);
-            this.textBoxVozidlaTyp.MaxLength = 64;
-            this.textBoxVozidlaTyp.Name = "textBoxVozidlaTyp";
-            this.textBoxVozidlaTyp.Size = new System.Drawing.Size(170, 24);
-            this.textBoxVozidlaTyp.TabIndex = 14;
+            this.buttonVozidlaPotvrdit.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonVozidlaPotvrdit.Location = new System.Drawing.Point(263, 389);
+            this.buttonVozidlaPotvrdit.Name = "buttonVozidlaPotvrditVozidlo";
+            this.buttonVozidlaPotvrdit.Size = new System.Drawing.Size(75, 25);
+            this.buttonVozidlaPotvrdit.TabIndex = 17;
+            this.buttonVozidlaPotvrdit.Text = "Potvrdit";
+            this.buttonVozidlaPotvrdit.UseVisualStyleBackColor = true;
+            this.buttonVozidlaPotvrdit.Click += new System.EventHandler(this.ButtonVozidlaPotvrditVozidlo_Click);
             // 
             // buttonVozidlaPridatTyp
             // 
             this.buttonVozidlaPridatTyp.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonVozidlaPridatTyp.Enabled = false;
-            this.buttonVozidlaPridatTyp.Location = new System.Drawing.Point(771, 448);
+            this.buttonVozidlaPridatTyp.Location = new System.Drawing.Point(346, 326);
             this.buttonVozidlaPridatTyp.Name = "buttonVozidlaPridatTyp";
             this.buttonVozidlaPridatTyp.Size = new System.Drawing.Size(75, 25);
             this.buttonVozidlaPridatTyp.TabIndex = 15;
@@ -1213,62 +1212,86 @@ namespace VozovyPark
             this.buttonVozidlaPridatTyp.UseVisualStyleBackColor = true;
             this.buttonVozidlaPridatTyp.Click += new System.EventHandler(this.ButtonVozidlaPridatMoznost_Click);
             // 
-            // labelVozidlaSpotreba
+            // buttonVozidlaPridatModel
             // 
-            this.labelVozidlaSpotreba.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelVozidlaSpotreba.AutoSize = true;
-            this.labelVozidlaSpotreba.Location = new System.Drawing.Point(444, 482);
-            this.labelVozidlaSpotreba.Name = "labelVozidlaSpotreba";
-            this.labelVozidlaSpotreba.Size = new System.Drawing.Size(145, 18);
-            this.labelVozidlaSpotreba.TabIndex = 0;
-            this.labelVozidlaSpotreba.Text = "Spotřeba na 100 km:";
+            this.buttonVozidlaPridatModel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonVozidlaPridatModel.Location = new System.Drawing.Point(346, 225);
+            this.buttonVozidlaPridatModel.Name = "buttonVozidlaPridatModel";
+            this.buttonVozidlaPridatModel.Size = new System.Drawing.Size(75, 25);
+            this.buttonVozidlaPridatModel.TabIndex = 12;
+            this.buttonVozidlaPridatModel.Text = "Přidat";
+            this.buttonVozidlaPridatModel.UseVisualStyleBackColor = true;
+            this.buttonVozidlaPridatModel.Click += new System.EventHandler(this.ButtonVozidlaPridatMoznost_Click);
+            // 
+            // buttonVozidlaPridatVyrobce
+            // 
+            this.buttonVozidlaPridatVyrobce.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonVozidlaPridatVyrobce.Location = new System.Drawing.Point(346, 124);
+            this.buttonVozidlaPridatVyrobce.Name = "buttonVozidlaPridatVyrobce";
+            this.buttonVozidlaPridatVyrobce.Size = new System.Drawing.Size(75, 25);
+            this.buttonVozidlaPridatVyrobce.TabIndex = 9;
+            this.buttonVozidlaPridatVyrobce.Text = "Přidat";
+            this.buttonVozidlaPridatVyrobce.UseVisualStyleBackColor = true;
+            this.buttonVozidlaPridatVyrobce.Click += new System.EventHandler(this.ButtonVozidlaPridatMoznost_Click);
+            // 
+            // listBoxVozidlaModel
+            // 
+            this.listBoxVozidlaModel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.listBoxVozidlaModel.FormattingEnabled = true;
+            this.listBoxVozidlaModel.ItemHeight = 18;
+            this.listBoxVozidlaModel.Location = new System.Drawing.Point(168, 160);
+            this.listBoxVozidlaModel.Name = "listBoxVozidlaModel";
+            this.listBoxVozidlaModel.Size = new System.Drawing.Size(170, 58);
+            this.listBoxVozidlaModel.TabIndex = 10;
+            // 
+            // textBoxVozidlaModel
+            // 
+            this.textBoxVozidlaModel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxVozidlaModel.Location = new System.Drawing.Point(168, 225);
+            this.textBoxVozidlaModel.MaxLength = 64;
+            this.textBoxVozidlaModel.Name = "textBoxVozidlaModel";
+            this.textBoxVozidlaModel.Size = new System.Drawing.Size(170, 24);
+            this.textBoxVozidlaModel.TabIndex = 11;
+            // 
+            // textBoxVozidlaTyp
+            // 
+            this.textBoxVozidlaTyp.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxVozidlaTyp.Location = new System.Drawing.Point(168, 328);
+            this.textBoxVozidlaTyp.MaxLength = 64;
+            this.textBoxVozidlaTyp.Name = "textBoxVozidlaTyp";
+            this.textBoxVozidlaTyp.Size = new System.Drawing.Size(170, 24);
+            this.textBoxVozidlaTyp.TabIndex = 14;
             // 
             // numericUpDownVozidlaSpotreba
             // 
             this.numericUpDownVozidlaSpotreba.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.numericUpDownVozidlaSpotreba.DecimalPlaces = 2;
-            this.numericUpDownVozidlaSpotreba.Enabled = false;
-            this.numericUpDownVozidlaSpotreba.Location = new System.Drawing.Point(595, 479);
+            this.numericUpDownVozidlaSpotreba.Location = new System.Drawing.Point(168, 360);
             this.numericUpDownVozidlaSpotreba.Maximum = new decimal(new int[] {
             50,
             0,
             0,
             0});
             this.numericUpDownVozidlaSpotreba.Name = "numericUpDownVozidlaSpotreba";
-            this.numericUpDownVozidlaSpotreba.Size = new System.Drawing.Size(168, 24);
+            this.numericUpDownVozidlaSpotreba.Size = new System.Drawing.Size(170, 24);
             this.numericUpDownVozidlaSpotreba.TabIndex = 16;
             // 
-            // buttonVozidlaZrusitVozidlo
+            // listBoxVozidlaTyp
             // 
-            this.buttonVozidlaZrusitVozidlo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonVozidlaZrusitVozidlo.Enabled = false;
-            this.buttonVozidlaZrusitVozidlo.Location = new System.Drawing.Point(607, 509);
-            this.buttonVozidlaZrusitVozidlo.Name = "buttonVozidlaZrusitVozidlo";
-            this.buttonVozidlaZrusitVozidlo.Size = new System.Drawing.Size(75, 25);
-            this.buttonVozidlaZrusitVozidlo.TabIndex = 18;
-            this.buttonVozidlaZrusitVozidlo.Text = "Zrušit";
-            this.buttonVozidlaZrusitVozidlo.UseVisualStyleBackColor = true;
-            this.buttonVozidlaZrusitVozidlo.Click += new System.EventHandler(this.ButtonVozidlaZrusitVozidlo_Click);
-            // 
-            // buttonVozidlaPotvrditVozidlo
-            // 
-            this.buttonVozidlaPotvrditVozidlo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonVozidlaPotvrditVozidlo.Enabled = false;
-            this.buttonVozidlaPotvrditVozidlo.Location = new System.Drawing.Point(688, 509);
-            this.buttonVozidlaPotvrditVozidlo.Name = "buttonVozidlaPotvrditVozidlo";
-            this.buttonVozidlaPotvrditVozidlo.Size = new System.Drawing.Size(75, 25);
-            this.buttonVozidlaPotvrditVozidlo.TabIndex = 17;
-            this.buttonVozidlaPotvrditVozidlo.Text = "Potvrdit";
-            this.buttonVozidlaPotvrditVozidlo.UseVisualStyleBackColor = true;
-            this.buttonVozidlaPotvrditVozidlo.Click += new System.EventHandler(this.ButtonVozidlaPotvrditVozidlo_Click);
+            this.listBoxVozidlaTyp.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.listBoxVozidlaTyp.FormattingEnabled = true;
+            this.listBoxVozidlaTyp.ItemHeight = 18;
+            this.listBoxVozidlaTyp.Location = new System.Drawing.Point(168, 264);
+            this.listBoxVozidlaTyp.Name = "listBoxVozidlaTyp";
+            this.listBoxVozidlaTyp.Size = new System.Drawing.Size(170, 58);
+            this.listBoxVozidlaTyp.TabIndex = 13;
             // 
             // panelSpravaRezervaci
             // 
-            this.panelSpravaRezervaci.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.panelSpravaRezervaci.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.panelSpravaRezervaci.Controls.Add(this.checkedListBoxRezervaceSeznamRezervaci);
-            this.panelSpravaRezervaci.Controls.Add(this.listViewRezervaceSeznamUzivatelu);
-            this.panelSpravaRezervaci.Controls.Add(this.treeViewRezervaceSeznamVozidel);
+            this.panelSpravaRezervaci.Controls.Add(this.listBoxRezervaceSeznamRezervaci);
             this.panelSpravaRezervaci.Controls.Add(this.treeViewRezervaceSeznamRezervaci);
             this.panelSpravaRezervaci.Controls.Add(this.buttonRezervaceZpet);
             this.panelSpravaRezervaci.Controls.Add(this.labelRezervaceRezervaci);
@@ -1276,65 +1299,27 @@ namespace VozovyPark
             this.panelSpravaRezervaci.Controls.Add(this.checkBoxRezervaceZobrazitPredchozi);
             this.panelSpravaRezervaci.Controls.Add(this.radioButtonRezervacePodleVozidel);
             this.panelSpravaRezervaci.Controls.Add(this.radioButtonRezervacePodleUzivatelu);
-            this.panelSpravaRezervaci.Controls.Add(this.buttonRezervacePridatRezervaci);
+            this.panelSpravaRezervaci.Controls.Add(this.buttonRezervacePridat);
             this.panelSpravaRezervaci.Controls.Add(this.buttonRezervaceUpravit);
-            this.panelSpravaRezervaci.Controls.Add(this.buttonRezervaceOdebratRezervaci);
-            this.panelSpravaRezervaci.Controls.Add(this.labelRezervaceUzivatel);
-            this.panelSpravaRezervaci.Controls.Add(this.textBoxRezervaceUzivatel);
-            this.panelSpravaRezervaci.Controls.Add(this.buttonRezervaceHledat);
-            this.panelSpravaRezervaci.Controls.Add(this.labeRezervaceVozidlo);
-            this.panelSpravaRezervaci.Controls.Add(this.labelRezervaceRezervaceOd);
-            this.panelSpravaRezervaci.Controls.Add(this.dateTimePickerRezervaceRezervaceOdDatum);
-            this.panelSpravaRezervaci.Controls.Add(this.dateTimePickerRezervaceRezervaceOdCas);
-            this.panelSpravaRezervaci.Controls.Add(this.labelRezervaceRezervaceDo);
-            this.panelSpravaRezervaci.Controls.Add(this.dateTimePickerRezervaceRezervaceDoDatum);
-            this.panelSpravaRezervaci.Controls.Add(this.dateTimePickerRezervaceRezervaceDoCas);
-            this.panelSpravaRezervaci.Controls.Add(this.buttonRezervaceZrusit);
-            this.panelSpravaRezervaci.Controls.Add(this.buttonRezervacePotvrdit);
+            this.panelSpravaRezervaci.Controls.Add(this.buttonRezervaceOdebrat);
+            this.panelSpravaRezervaci.Controls.Add(this.groupBoxRezervaceDetail);
             this.panelSpravaRezervaci.Location = new System.Drawing.Point(0, 0);
             this.panelSpravaRezervaci.Name = "panelSpravaRezervaci";
             this.panelSpravaRezervaci.Size = new System.Drawing.Size(984, 561);
             this.panelSpravaRezervaci.TabIndex = 0;
             this.panelSpravaRezervaci.Visible = false;
             // 
-            // checkedListBoxRezervaceSeznamRezervaci
+            // listBoxRezervaceSeznamRezervaci
             // 
-            this.checkedListBoxRezervaceSeznamRezervaci.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.checkedListBoxRezervaceSeznamRezervaci.CheckOnClick = true;
-            this.checkedListBoxRezervaceSeznamRezervaci.Enabled = false;
-            this.checkedListBoxRezervaceSeznamRezervaci.FormattingEnabled = true;
-            this.checkedListBoxRezervaceSeznamRezervaci.Location = new System.Drawing.Point(59, 298);
-            this.checkedListBoxRezervaceSeznamRezervaci.Name = "checkedListBoxRezervaceSeznamRezervaci";
-            this.checkedListBoxRezervaceSeznamRezervaci.Size = new System.Drawing.Size(276, 137);
-            this.checkedListBoxRezervaceSeznamRezervaci.TabIndex = 19;
-            this.checkedListBoxRezervaceSeznamRezervaci.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.checkedListBox_OneCheck);
-            this.checkedListBoxRezervaceSeznamRezervaci.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.listViewRezervaceSeznamRezervaci_SelectedIndexChanged);
-            // 
-            // listViewRezervaceSeznamUzivatelu
-            // 
-            this.listViewRezervaceSeznamUzivatelu.Alignment = System.Windows.Forms.ListViewAlignment.Left;
-            this.listViewRezervaceSeznamUzivatelu.AutoArrange = false;
-            this.listViewRezervaceSeznamUzivatelu.Enabled = false;
-            this.listViewRezervaceSeznamUzivatelu.HideSelection = false;
-            this.listViewRezervaceSeznamUzivatelu.LabelWrap = false;
-            this.listViewRezervaceSeznamUzivatelu.Location = new System.Drawing.Point(389, 122);
-            this.listViewRezervaceSeznamUzivatelu.MultiSelect = false;
-            this.listViewRezervaceSeznamUzivatelu.Name = "listViewRezervaceSeznamUzivatelu";
-            this.listViewRezervaceSeznamUzivatelu.Size = new System.Drawing.Size(277, 112);
-            this.listViewRezervaceSeznamUzivatelu.TabIndex = 9;
-            this.listViewRezervaceSeznamUzivatelu.UseCompatibleStateImageBehavior = false;
-            this.listViewRezervaceSeznamUzivatelu.View = System.Windows.Forms.View.List;
-            // 
-            // treeViewRezervaceSeznamVozidel
-            // 
-            this.treeViewRezervaceSeznamVozidel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.treeViewRezervaceSeznamVozidel.Enabled = false;
-            this.treeViewRezervaceSeznamVozidel.FullRowSelect = true;
-            this.treeViewRezervaceSeznamVozidel.HideSelection = false;
-            this.treeViewRezervaceSeznamVozidel.Location = new System.Drawing.Point(389, 300);
-            this.treeViewRezervaceSeznamVozidel.Name = "treeViewRezervaceSeznamVozidel";
-            this.treeViewRezervaceSeznamVozidel.Size = new System.Drawing.Size(277, 220);
-            this.treeViewRezervaceSeznamVozidel.TabIndex = 12;
+            this.listBoxRezervaceSeznamRezervaci.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.listBoxRezervaceSeznamRezervaci.Enabled = false;
+            this.listBoxRezervaceSeznamRezervaci.FormattingEnabled = true;
+            this.listBoxRezervaceSeznamRezervaci.ItemHeight = 18;
+            this.listBoxRezervaceSeznamRezervaci.Location = new System.Drawing.Point(58, 300);
+            this.listBoxRezervaceSeznamRezervaci.Name = "listBoxRezervaceSeznamRezervaci";
+            this.listBoxRezervaceSeznamRezervaci.Size = new System.Drawing.Size(277, 130);
+            this.listBoxRezervaceSeznamRezervaci.TabIndex = 3;
+            this.listBoxRezervaceSeznamRezervaci.SelectedIndexChanged += new System.EventHandler(this.listBoxRezervaceSeznamRezervaci_SelectedIndexChanged);
             // 
             // treeViewRezervaceSeznamRezervaci
             // 
@@ -1401,6 +1386,7 @@ namespace VozovyPark
             this.radioButtonRezervacePodleVozidel.TabStop = true;
             this.radioButtonRezervacePodleVozidel.Text = "Podle vozidel";
             this.radioButtonRezervacePodleVozidel.UseVisualStyleBackColor = true;
+            this.radioButtonRezervacePodleVozidel.CheckedChanged += new System.EventHandler(this.radioButtonRezervacePodleVozidel_CheckedChanged);
             // 
             // radioButtonRezervacePodleUzivatelu
             // 
@@ -1415,14 +1401,14 @@ namespace VozovyPark
             // 
             // buttonRezervacePridatRezervaci
             // 
-            this.buttonRezervacePridatRezervaci.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonRezervacePridatRezervaci.Location = new System.Drawing.Point(200, 440);
-            this.buttonRezervacePridatRezervaci.Name = "buttonRezervacePridatRezervaci";
-            this.buttonRezervacePridatRezervaci.Size = new System.Drawing.Size(135, 25);
-            this.buttonRezervacePridatRezervaci.TabIndex = 6;
-            this.buttonRezervacePridatRezervaci.Text = "Přidat rezervaci";
-            this.buttonRezervacePridatRezervaci.UseVisualStyleBackColor = true;
-            this.buttonRezervacePridatRezervaci.Click += new System.EventHandler(this.buttonRezervacePridatRezervaci_Click);
+            this.buttonRezervacePridat.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonRezervacePridat.Location = new System.Drawing.Point(200, 440);
+            this.buttonRezervacePridat.Name = "buttonRezervacePridatRezervaci";
+            this.buttonRezervacePridat.Size = new System.Drawing.Size(135, 25);
+            this.buttonRezervacePridat.TabIndex = 6;
+            this.buttonRezervacePridat.Text = "Přidat rezervaci";
+            this.buttonRezervacePridat.UseVisualStyleBackColor = true;
+            this.buttonRezervacePridat.Click += new System.EventHandler(this.buttonRezervacePridatRezervaci_Click);
             // 
             // buttonRezervaceUpravit
             // 
@@ -1438,144 +1424,182 @@ namespace VozovyPark
             // 
             // buttonRezervaceOdebratRezervaci
             // 
-            this.buttonRezervaceOdebratRezervaci.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonRezervaceOdebratRezervaci.Enabled = false;
-            this.buttonRezervaceOdebratRezervaci.Location = new System.Drawing.Point(200, 502);
-            this.buttonRezervaceOdebratRezervaci.Name = "buttonRezervaceOdebratRezervaci";
-            this.buttonRezervaceOdebratRezervaci.Size = new System.Drawing.Size(135, 25);
-            this.buttonRezervaceOdebratRezervaci.TabIndex = 8;
-            this.buttonRezervaceOdebratRezervaci.Text = "Odebrat rezervaci";
-            this.buttonRezervaceOdebratRezervaci.UseVisualStyleBackColor = true;
-            this.buttonRezervaceOdebratRezervaci.Click += new System.EventHandler(this.buttonRezervaceOdebratRezervaci_Click);
+            this.buttonRezervaceOdebrat.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonRezervaceOdebrat.Enabled = false;
+            this.buttonRezervaceOdebrat.Location = new System.Drawing.Point(200, 502);
+            this.buttonRezervaceOdebrat.Name = "buttonRezervaceOdebratRezervaci";
+            this.buttonRezervaceOdebrat.Size = new System.Drawing.Size(135, 25);
+            this.buttonRezervaceOdebrat.TabIndex = 8;
+            this.buttonRezervaceOdebrat.Text = "Odebrat rezervaci";
+            this.buttonRezervaceOdebrat.UseVisualStyleBackColor = true;
+            this.buttonRezervaceOdebrat.Click += new System.EventHandler(this.buttonRezervaceOdebratRezervaci_Click);
             // 
-            // labelRezervaceUzivatel
+            // groupBoxRezervaceDetail
             // 
-            this.labelRezervaceUzivatel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labelRezervaceUzivatel.AutoSize = true;
-            this.labelRezervaceUzivatel.Location = new System.Drawing.Point(386, 101);
-            this.labelRezervaceUzivatel.Name = "labelRezervaceUzivatel";
-            this.labelRezervaceUzivatel.Size = new System.Drawing.Size(64, 18);
-            this.labelRezervaceUzivatel.TabIndex = 0;
-            this.labelRezervaceUzivatel.Text = "Uživatel:";
+            this.groupBoxRezervaceDetail.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBoxRezervaceDetail.Controls.Add(this.buttonRezervaceZrusit);
+            this.groupBoxRezervaceDetail.Controls.Add(this.treeViewRezervaceSeznamVozidel);
+            this.groupBoxRezervaceDetail.Controls.Add(this.buttonRezervacePotvrdit);
+            this.groupBoxRezervaceDetail.Controls.Add(this.listBoxRezervaceSeznamUzivatelu);
+            this.groupBoxRezervaceDetail.Controls.Add(this.labelRezervaceHledat);
+            this.groupBoxRezervaceDetail.Controls.Add(this.labelRezervaceRezervaceOd);
+            this.groupBoxRezervaceDetail.Controls.Add(this.labelRezervaceRezervaceDo);
+            this.groupBoxRezervaceDetail.Controls.Add(this.labelRezervaceUzivatel);
+            this.groupBoxRezervaceDetail.Controls.Add(this.labeRezervaceVozidlo);
+            this.groupBoxRezervaceDetail.Controls.Add(this.textBoxRezervaceUzivatel);
+            this.groupBoxRezervaceDetail.Controls.Add(this.dateTimePickerRezervaceRezervaceOdDatum);
+            this.groupBoxRezervaceDetail.Controls.Add(this.dateTimePickerRezervaceRezervaceDoCas);
+            this.groupBoxRezervaceDetail.Controls.Add(this.dateTimePickerRezervaceRezervaceDoDatum);
+            this.groupBoxRezervaceDetail.Controls.Add(this.dateTimePickerRezervaceRezervaceOdCas);
+            this.groupBoxRezervaceDetail.Enabled = false;
+            this.groupBoxRezervaceDetail.Location = new System.Drawing.Point(372, 100);
+            this.groupBoxRezervaceDetail.Name = "groupBoxRezervaceDetail";
+            this.groupBoxRezervaceDetail.Size = new System.Drawing.Size(544, 434);
+            this.groupBoxRezervaceDetail.TabIndex = 18;
+            this.groupBoxRezervaceDetail.TabStop = false;
+            this.groupBoxRezervaceDetail.Text = "Detail:";
             // 
-            // textBoxRezervaceUzivatel
+            // buttonRezervaceZrusit
             // 
-            this.textBoxRezervaceUzivatel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.textBoxRezervaceUzivatel.Enabled = false;
-            this.textBoxRezervaceUzivatel.Location = new System.Drawing.Point(389, 235);
-            this.textBoxRezervaceUzivatel.MaxLength = 64;
-            this.textBoxRezervaceUzivatel.Name = "textBoxRezervaceUzivatel";
-            this.textBoxRezervaceUzivatel.Size = new System.Drawing.Size(198, 24);
-            this.textBoxRezervaceUzivatel.TabIndex = 10;
+            this.buttonRezervaceZrusit.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonRezervaceZrusit.Location = new System.Drawing.Point(375, 218);
+            this.buttonRezervaceZrusit.Name = "buttonRezervaceZrusit";
+            this.buttonRezervaceZrusit.Size = new System.Drawing.Size(75, 25);
+            this.buttonRezervaceZrusit.TabIndex = 17;
+            this.buttonRezervaceZrusit.Text = "Zrušit";
+            this.buttonRezervaceZrusit.UseVisualStyleBackColor = true;
+            this.buttonRezervaceZrusit.Click += new System.EventHandler(this.buttonRezervaceZrusit_Click);
             // 
-            // buttonRezervaceHledat
+            // treeViewRezervaceSeznamVozidel
             // 
-            this.buttonRezervaceHledat.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonRezervaceHledat.Enabled = false;
-            this.buttonRezervaceHledat.Location = new System.Drawing.Point(591, 235);
-            this.buttonRezervaceHledat.Name = "buttonRezervaceHledat";
-            this.buttonRezervaceHledat.Size = new System.Drawing.Size(75, 25);
-            this.buttonRezervaceHledat.TabIndex = 11;
-            this.buttonRezervaceHledat.Text = "Hledat";
-            this.buttonRezervaceHledat.UseVisualStyleBackColor = true;
+            this.treeViewRezervaceSeznamVozidel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.treeViewRezervaceSeznamVozidel.FullRowSelect = true;
+            this.treeViewRezervaceSeznamVozidel.HideSelection = false;
+            this.treeViewRezervaceSeznamVozidel.Location = new System.Drawing.Point(18, 218);
+            this.treeViewRezervaceSeznamVozidel.Name = "treeViewRezervaceSeznamVozidel";
+            this.treeViewRezervaceSeznamVozidel.Size = new System.Drawing.Size(277, 208);
+            this.treeViewRezervaceSeznamVozidel.TabIndex = 11;
             // 
-            // labeRezervaceVozidlo
+            // buttonRezervacePotvrdit
             // 
-            this.labeRezervaceVozidlo.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.labeRezervaceVozidlo.AutoSize = true;
-            this.labeRezervaceVozidlo.Location = new System.Drawing.Point(392, 279);
-            this.labeRezervaceVozidlo.Name = "labeRezervaceVozidlo";
-            this.labeRezervaceVozidlo.Size = new System.Drawing.Size(61, 18);
-            this.labeRezervaceVozidlo.TabIndex = 0;
-            this.labeRezervaceVozidlo.Text = "Vozidlo:";
+            this.buttonRezervacePotvrdit.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.buttonRezervacePotvrdit.Location = new System.Drawing.Point(456, 218);
+            this.buttonRezervacePotvrdit.Name = "buttonRezervacePotvrdit";
+            this.buttonRezervacePotvrdit.Size = new System.Drawing.Size(75, 25);
+            this.buttonRezervacePotvrdit.TabIndex = 16;
+            this.buttonRezervacePotvrdit.Text = "Potvrdit";
+            this.buttonRezervacePotvrdit.UseVisualStyleBackColor = true;
+            this.buttonRezervacePotvrdit.Click += new System.EventHandler(this.buttonRezervacePotvrdit_Click);
+            // 
+            // listBoxRezervaceSeznamUzivatelu
+            // 
+            this.listBoxRezervaceSeznamUzivatelu.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.listBoxRezervaceSeznamUzivatelu.FormattingEnabled = true;
+            this.listBoxRezervaceSeznamUzivatelu.ItemHeight = 18;
+            this.listBoxRezervaceSeznamUzivatelu.Location = new System.Drawing.Point(18, 38);
+            this.listBoxRezervaceSeznamUzivatelu.Name = "listBoxRezervaceSeznamUzivatelu";
+            this.listBoxRezervaceSeznamUzivatelu.Size = new System.Drawing.Size(277, 112);
+            this.listBoxRezervaceSeznamUzivatelu.TabIndex = 9;
+            // 
+            // labelRezervaceHledat
+            // 
+            this.labelRezervaceHledat.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelRezervaceHledat.AutoSize = true;
+            this.labelRezervaceHledat.Location = new System.Drawing.Point(14, 156);
+            this.labelRezervaceHledat.Name = "labelRezervaceHledat";
+            this.labelRezervaceHledat.Size = new System.Drawing.Size(54, 18);
+            this.labelRezervaceHledat.TabIndex = 0;
+            this.labelRezervaceHledat.Text = "Hledat:";
             // 
             // labelRezervaceRezervaceOd
             // 
             this.labelRezervaceRezervaceOd.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelRezervaceRezervaceOd.AutoSize = true;
-            this.labelRezervaceRezervaceOd.Location = new System.Drawing.Point(700, 101);
+            this.labelRezervaceRezervaceOd.Location = new System.Drawing.Point(328, 20);
             this.labelRezervaceRezervaceOd.Name = "labelRezervaceRezervaceOd";
             this.labelRezervaceRezervaceOd.Size = new System.Drawing.Size(104, 18);
             this.labelRezervaceRezervaceOd.TabIndex = 0;
             this.labelRezervaceRezervaceOd.Text = "Rezervace od:";
             // 
-            // dateTimePickerRezervaceRezervaceOdDatum
-            // 
-            this.dateTimePickerRezervaceRezervaceOdDatum.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateTimePickerRezervaceRezervaceOdDatum.Enabled = false;
-            this.dateTimePickerRezervaceRezervaceOdDatum.Location = new System.Drawing.Point(703, 122);
-            this.dateTimePickerRezervaceRezervaceOdDatum.Name = "dateTimePickerRezervaceRezervaceOdDatum";
-            this.dateTimePickerRezervaceRezervaceOdDatum.Size = new System.Drawing.Size(200, 24);
-            this.dateTimePickerRezervaceRezervaceOdDatum.TabIndex = 13;
-            // 
-            // dateTimePickerRezervaceRezervaceOdCas
-            // 
-            this.dateTimePickerRezervaceRezervaceOdCas.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateTimePickerRezervaceRezervaceOdCas.Checked = false;
-            this.dateTimePickerRezervaceRezervaceOdCas.Enabled = false;
-            this.dateTimePickerRezervaceRezervaceOdCas.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePickerRezervaceRezervaceOdCas.Location = new System.Drawing.Point(703, 152);
-            this.dateTimePickerRezervaceRezervaceOdCas.Name = "dateTimePickerRezervaceRezervaceOdCas";
-            this.dateTimePickerRezervaceRezervaceOdCas.ShowCheckBox = true;
-            this.dateTimePickerRezervaceRezervaceOdCas.ShowUpDown = true;
-            this.dateTimePickerRezervaceRezervaceOdCas.Size = new System.Drawing.Size(101, 24);
-            this.dateTimePickerRezervaceRezervaceOdCas.TabIndex = 14;
-            // 
             // labelRezervaceRezervaceDo
             // 
             this.labelRezervaceRezervaceDo.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.labelRezervaceRezervaceDo.AutoSize = true;
-            this.labelRezervaceRezervaceDo.Location = new System.Drawing.Point(700, 200);
+            this.labelRezervaceRezervaceDo.Location = new System.Drawing.Point(328, 118);
             this.labelRezervaceRezervaceDo.Name = "labelRezervaceRezervaceDo";
             this.labelRezervaceRezervaceDo.Size = new System.Drawing.Size(104, 18);
             this.labelRezervaceRezervaceDo.TabIndex = 0;
             this.labelRezervaceRezervaceDo.Text = "Rezervace do:";
             // 
-            // dateTimePickerRezervaceRezervaceDoDatum
+            // labelRezervaceUzivatel
             // 
-            this.dateTimePickerRezervaceRezervaceDoDatum.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.dateTimePickerRezervaceRezervaceDoDatum.Enabled = false;
-            this.dateTimePickerRezervaceRezervaceDoDatum.Location = new System.Drawing.Point(703, 221);
-            this.dateTimePickerRezervaceRezervaceDoDatum.Name = "dateTimePickerRezervaceRezervaceDoDatum";
-            this.dateTimePickerRezervaceRezervaceDoDatum.Size = new System.Drawing.Size(200, 24);
-            this.dateTimePickerRezervaceRezervaceDoDatum.TabIndex = 15;
+            this.labelRezervaceUzivatel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labelRezervaceUzivatel.AutoSize = true;
+            this.labelRezervaceUzivatel.Location = new System.Drawing.Point(14, 19);
+            this.labelRezervaceUzivatel.Name = "labelRezervaceUzivatel";
+            this.labelRezervaceUzivatel.Size = new System.Drawing.Size(64, 18);
+            this.labelRezervaceUzivatel.TabIndex = 0;
+            this.labelRezervaceUzivatel.Text = "Uživatel:";
+            // 
+            // labeRezervaceVozidlo
+            // 
+            this.labeRezervaceVozidlo.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.labeRezervaceVozidlo.AutoSize = true;
+            this.labeRezervaceVozidlo.Location = new System.Drawing.Point(14, 194);
+            this.labeRezervaceVozidlo.Name = "labeRezervaceVozidlo";
+            this.labeRezervaceVozidlo.Size = new System.Drawing.Size(61, 18);
+            this.labeRezervaceVozidlo.TabIndex = 0;
+            this.labeRezervaceVozidlo.Text = "Vozidlo:";
+            // 
+            // textBoxRezervaceUzivatel
+            // 
+            this.textBoxRezervaceUzivatel.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.textBoxRezervaceUzivatel.Location = new System.Drawing.Point(76, 153);
+            this.textBoxRezervaceUzivatel.MaxLength = 64;
+            this.textBoxRezervaceUzivatel.Name = "textBoxRezervaceUzivatel";
+            this.textBoxRezervaceUzivatel.Size = new System.Drawing.Size(219, 24);
+            this.textBoxRezervaceUzivatel.TabIndex = 10;
+            this.textBoxRezervaceUzivatel.TextChanged += new System.EventHandler(this.textBoxRezervaceUzivatel_TextChanged);
+            // 
+            // dateTimePickerRezervaceRezervaceOdDatum
+            // 
+            this.dateTimePickerRezervaceRezervaceOdDatum.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dateTimePickerRezervaceRezervaceOdDatum.Location = new System.Drawing.Point(331, 40);
+            this.dateTimePickerRezervaceRezervaceOdDatum.Name = "dateTimePickerRezervaceRezervaceOdDatum";
+            this.dateTimePickerRezervaceRezervaceOdDatum.Size = new System.Drawing.Size(200, 24);
+            this.dateTimePickerRezervaceRezervaceOdDatum.TabIndex = 12;
             // 
             // dateTimePickerRezervaceRezervaceDoCas
             // 
             this.dateTimePickerRezervaceRezervaceDoCas.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dateTimePickerRezervaceRezervaceDoCas.Checked = false;
-            this.dateTimePickerRezervaceRezervaceDoCas.Enabled = false;
             this.dateTimePickerRezervaceRezervaceDoCas.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dateTimePickerRezervaceRezervaceDoCas.Location = new System.Drawing.Point(703, 258);
+            this.dateTimePickerRezervaceRezervaceDoCas.Location = new System.Drawing.Point(331, 170);
             this.dateTimePickerRezervaceRezervaceDoCas.Name = "dateTimePickerRezervaceRezervaceDoCas";
             this.dateTimePickerRezervaceRezervaceDoCas.ShowCheckBox = true;
             this.dateTimePickerRezervaceRezervaceDoCas.ShowUpDown = true;
             this.dateTimePickerRezervaceRezervaceDoCas.Size = new System.Drawing.Size(101, 24);
-            this.dateTimePickerRezervaceRezervaceDoCas.TabIndex = 16;
+            this.dateTimePickerRezervaceRezervaceDoCas.TabIndex = 15;
             // 
-            // buttonRezervaceZrusit
+            // dateTimePickerRezervaceRezervaceDoDatum
             // 
-            this.buttonRezervaceZrusit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonRezervaceZrusit.Enabled = false;
-            this.buttonRezervaceZrusit.Location = new System.Drawing.Point(703, 298);
-            this.buttonRezervaceZrusit.Name = "buttonRezervaceZrusit";
-            this.buttonRezervaceZrusit.Size = new System.Drawing.Size(75, 25);
-            this.buttonRezervaceZrusit.TabIndex = 18;
-            this.buttonRezervaceZrusit.Text = "Zrušit";
-            this.buttonRezervaceZrusit.UseVisualStyleBackColor = true;
-            this.buttonRezervaceZrusit.Click += new System.EventHandler(this.buttonRezervaceZrusit_Click);
+            this.dateTimePickerRezervaceRezervaceDoDatum.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dateTimePickerRezervaceRezervaceDoDatum.Location = new System.Drawing.Point(331, 140);
+            this.dateTimePickerRezervaceRezervaceDoDatum.Name = "dateTimePickerRezervaceRezervaceDoDatum";
+            this.dateTimePickerRezervaceRezervaceDoDatum.Size = new System.Drawing.Size(200, 24);
+            this.dateTimePickerRezervaceRezervaceDoDatum.TabIndex = 14;
             // 
-            // buttonRezervacePotvrdit
+            // dateTimePickerRezervaceRezervaceOdCas
             // 
-            this.buttonRezervacePotvrdit.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.buttonRezervacePotvrdit.Enabled = false;
-            this.buttonRezervacePotvrdit.Location = new System.Drawing.Point(784, 298);
-            this.buttonRezervacePotvrdit.Name = "buttonRezervacePotvrdit";
-            this.buttonRezervacePotvrdit.Size = new System.Drawing.Size(75, 25);
-            this.buttonRezervacePotvrdit.TabIndex = 17;
-            this.buttonRezervacePotvrdit.Text = "Potvrdit";
-            this.buttonRezervacePotvrdit.UseVisualStyleBackColor = true;
-            this.buttonRezervacePotvrdit.Click += new System.EventHandler(this.buttonRezervacePotvrdit_Click);
+            this.dateTimePickerRezervaceRezervaceOdCas.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.dateTimePickerRezervaceRezervaceOdCas.Checked = false;
+            this.dateTimePickerRezervaceRezervaceOdCas.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePickerRezervaceRezervaceOdCas.Location = new System.Drawing.Point(331, 70);
+            this.dateTimePickerRezervaceRezervaceOdCas.Name = "dateTimePickerRezervaceRezervaceOdCas";
+            this.dateTimePickerRezervaceRezervaceOdCas.ShowCheckBox = true;
+            this.dateTimePickerRezervaceRezervaceOdCas.ShowUpDown = true;
+            this.dateTimePickerRezervaceRezervaceOdCas.Size = new System.Drawing.Size(101, 24);
+            this.dateTimePickerRezervaceRezervaceOdCas.TabIndex = 13;
             // 
             // panelServisVozidla
             // 
@@ -1836,13 +1860,13 @@ namespace VozovyPark
             this.Controls.Add(this.labelPrihlasenyUzivatel);
             this.Controls.Add(this.labelOznameni);
             this.Controls.Add(this.panelSpravaRezervaci);
+            this.Controls.Add(this.panelSpravaUzivatelu);
             this.Controls.Add(this.panelSpravaVozidel);
             this.Controls.Add(this.panelLogin);
             this.Controls.Add(this.panelZmenaHesla);
             this.Controls.Add(this.panelUzivatelRezervace);
             this.Controls.Add(this.panelUzivatelHome);
             this.Controls.Add(this.panelAdminHome);
-            this.Controls.Add(this.panelSpravaUzivatelu);
             this.Controls.Add(this.panelServisVozidla);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -1862,11 +1886,17 @@ namespace VozovyPark
             this.panelAdminHome.PerformLayout();
             this.panelSpravaUzivatelu.ResumeLayout(false);
             this.panelSpravaUzivatelu.PerformLayout();
+            this.groupBoxUzivateleDetail.ResumeLayout(false);
+            this.groupBoxUzivateleDetail.PerformLayout();
             this.panelSpravaVozidel.ResumeLayout(false);
             this.panelSpravaVozidel.PerformLayout();
+            this.groupBoxVozidlaDetail.ResumeLayout(false);
+            this.groupBoxVozidlaDetail.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownVozidlaSpotreba)).EndInit();
             this.panelSpravaRezervaci.ResumeLayout(false);
             this.panelSpravaRezervaci.PerformLayout();
+            this.groupBoxRezervaceDetail.ResumeLayout(false);
+            this.groupBoxRezervaceDetail.PerformLayout();
             this.panelServisVozidla.ResumeLayout(false);
             this.panelServisVozidla.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownServisCena)).EndInit();
@@ -1933,15 +1963,15 @@ namespace VozovyPark
         private System.Windows.Forms.TextBox textBoxUzivatelePrijmeni;
         private System.Windows.Forms.Label labelUzivatelePrijmeni;
         private System.Windows.Forms.TextBox textBoxUzivateleJmeno;
-        private System.Windows.Forms.Button buttonUzivateleOdebratUzivatele;
-        private System.Windows.Forms.Button buttonUzivateleUpravitUzivatele;
+        private System.Windows.Forms.Button buttonUzivateleOdebrat;
+        private System.Windows.Forms.Button buttonUzivateleUpravit;
         private System.Windows.Forms.Label labelUzivateleSpravaUzivatelu;
         private System.Windows.Forms.Label labelUzivateleJmeno;
         private System.Windows.Forms.Label labelUzivateleSeznamUzivatelu;
         private System.Windows.Forms.ListBox listBoxUzivateleSeznamUzivatelu;
-        private System.Windows.Forms.Button buttonUzivatelePotvrditUzivatele;
-        private System.Windows.Forms.Button buttonUzivatelePridatUzivatele;
-        private System.Windows.Forms.Button buttonUzivateleZrusitUzivatele;
+        private System.Windows.Forms.Button buttonUzivatelePotvrdit;
+        private System.Windows.Forms.Button buttonUzivatelePridat;
+        private System.Windows.Forms.Button buttonUzivateleZrusit;
         private System.Windows.Forms.Label labelUzivateleNaposledyPrihlasen;
         private System.Windows.Forms.TextBox textBoxUzivateleJmenoUzivatele;
         private System.Windows.Forms.Label labelUzivateleJmenoUzivatele;
@@ -1952,16 +1982,16 @@ namespace VozovyPark
         private System.Windows.Forms.Button buttonVozidlaZpet;
         private System.Windows.Forms.Label labelVozidlaSpravaVozidel;
         private System.Windows.Forms.Label labelVozidlaSeznamVozidel;
-        private System.Windows.Forms.Button buttonVozidlaUpravitVozidlo;
-        private System.Windows.Forms.Button buttonVozidlaPridatVozidlo;
-        private System.Windows.Forms.Button buttonVozidlaOdebratVozidlo;
+        private System.Windows.Forms.Button buttonVozidlaUpravit;
+        private System.Windows.Forms.Button buttonVozidlaPridat;
+        private System.Windows.Forms.Button buttonVozidlaOdebrat;
         private System.Windows.Forms.Label labelVozidlaVyrobce;
         private System.Windows.Forms.TextBox textBoxVozidlaVyrobce;
         private System.Windows.Forms.Label labelVozidlaModel;
         private System.Windows.Forms.Label labelVozidlaTyp;
         private System.Windows.Forms.TextBox textBoxVozidlaTyp;
-        private System.Windows.Forms.Button buttonVozidlaZrusitVozidlo;
-        private System.Windows.Forms.Button buttonVozidlaPotvrditVozidlo;
+        private System.Windows.Forms.Button buttonVozidlaZrusit;
+        private System.Windows.Forms.Button buttonVozidlaPotvrdit;
         private System.Windows.Forms.Label labelVozidlaSPZ;
         private System.Windows.Forms.Button buttonVozidlaPridatTyp;
         private System.Windows.Forms.ListBox listBoxVozidlaTyp;
@@ -1978,12 +2008,11 @@ namespace VozovyPark
         private System.Windows.Forms.CheckBox checkBoxRezervaceZobrazitPredchozi;
         private System.Windows.Forms.RadioButton radioButtonRezervacePodleVozidel;
         private System.Windows.Forms.RadioButton radioButtonRezervacePodleUzivatelu;
-        private System.Windows.Forms.Button buttonRezervacePridatRezervaci;
+        private System.Windows.Forms.Button buttonRezervacePridat;
         private System.Windows.Forms.Button buttonRezervaceUpravit;
-        private System.Windows.Forms.Button buttonRezervaceOdebratRezervaci;
+        private System.Windows.Forms.Button buttonRezervaceOdebrat;
         private System.Windows.Forms.Label labelRezervaceUzivatel;
         private System.Windows.Forms.TextBox textBoxRezervaceUzivatel;
-        private System.Windows.Forms.Button buttonRezervaceHledat;
         private System.Windows.Forms.Label labeRezervaceVozidlo;
         private System.Windows.Forms.Label labelRezervaceRezervaceOd;
         private System.Windows.Forms.DateTimePicker dateTimePickerRezervaceRezervaceOdDatum;
@@ -2020,8 +2049,13 @@ namespace VozovyPark
         private System.Windows.Forms.TreeView treeViewRezervaceSeznamRezervaci;
         private System.Windows.Forms.TreeView treeViewRezervaceSeznamVozidel;
         private System.Windows.Forms.MaskedTextBox maskedTextBoxVozidlaSPZ;
-        private System.Windows.Forms.ListView listViewRezervaceSeznamUzivatelu;
-        private System.Windows.Forms.CheckedListBox checkedListBoxRezervaceSeznamRezervaci;
+        private System.Windows.Forms.ListBox listBoxRezervaceSeznamRezervaci;
+        private System.Windows.Forms.ListBox listBoxRezervaceSeznamUzivatelu;
+        private System.Windows.Forms.Label labelRezervaceHledat;
+        private System.Windows.Forms.GroupBox groupBoxRezervaceDetail;
+        private System.Windows.Forms.GroupBox groupBoxVozidlaDetail;
+        private System.Windows.Forms.GroupBox groupBoxUzivateleDetail;
+        private System.Windows.Forms.CheckBox checkBoxUzivateleAdministrator;
     }
 }
 
