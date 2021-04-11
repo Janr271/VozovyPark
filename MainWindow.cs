@@ -35,12 +35,8 @@ namespace VozovyPark
             buttonServisZpet.Click += (sender, e) => PrechodPanelu(sender, panelServisVozidla, panelSpravaVozidel);
         }
 
-        bool uzivateleUpravitUzivatele = false;
-        List<Uzivatele> uzivateleSeznamUzivatelu;
-        bool vozidlaUpravitVozidlo = false;
-        List<Vozidla> vozidlaSeznamVozidel;
-        Uzivatele aktualniUzivatel; //Obsahuje informace o uživateli, který je aktuálně přihlášen do systému
-        bool rezervaceUpravitRezervaci = false;
+        //Obsahuje informace o uživateli, který je aktuálně přihlášen do systému
+        Uzivatele aktualniUzivatel; 
 
         // Timer, který ovládá dobu vyditelnosti systémových oznámení
         private void TimerOznameni_Tick(object sender, EventArgs e)
@@ -121,14 +117,6 @@ namespace VozovyPark
             {
                 RezervaceNacistDatabazi();
             }
-            if (sender == buttonUzivateleZpet)
-            {
-                uzivateleSeznamUzivatelu = null;
-            }
-            if (sender == buttonVozidlaZpet)
-            {
-                vozidlaSeznamVozidel = null;
-            }
 
             // Otevře nový panel, případně panel administrátora, pokud je specifikován
             if (otevritAdmin != null && aktualniUzivatel.Administrator == true)
@@ -163,48 +151,33 @@ namespace VozovyPark
 
                     if (listVozidel[index].Typ != listVozidel[index - 1].Typ)   // Pokud se změnil typ oproti předchozímu kolu, tak zapíše celou řadu
                     {
-                        treeView.Nodes.Add(listVozidel[index].Typ).Nodes.Add(listVozidel[index].Vyrobce).Nodes.Add(listVozidel[index].Model).Nodes.Add(listVozidel[index].SPZ).Tag = listVozidel[index].Id;
+                        treeView.Nodes.Add(listVozidel[index].Typ).Nodes.Add(listVozidel[index].Vyrobce).Nodes.Add(listVozidel[index].Model).Nodes.Add(listVozidel[index].Id.ToString(), listVozidel[index].SPZ).Tag = listVozidel[index].Id;
                     }
 
                     else if (listVozidel[index].Vyrobce != listVozidel[index - 1].Vyrobce)  // Pokud se změnil výrobce oproti předchozímu kolu, tak zapíše pouze následující vlastnosti
                     {
-                        treeView.Nodes[indexTypu].Nodes.Add(listVozidel[index].Vyrobce).Nodes.Add(listVozidel[index].Model).Nodes.Add(listVozidel[index].SPZ).Tag = listVozidel[index].Id;
+                        treeView.Nodes[indexTypu].Nodes.Add(listVozidel[index].Vyrobce).Nodes.Add(listVozidel[index].Model).Nodes.Add(listVozidel[index].Id.ToString(), listVozidel[index].SPZ).Tag = listVozidel[index].Id;
                     }
 
                     else if (listVozidel[index].Model != listVozidel[index - 1].Model)  // Pokud se změnil model oproti předchozímu kolu, tak zapíše pouze následující vlastnosti
                     {
-                        treeView.Nodes[indexTypu].Nodes[indexVyrobce].Nodes.Add(listVozidel[index].Model).Nodes.Add(listVozidel[index].SPZ).Tag = listVozidel[index].Id;
+                        treeView.Nodes[indexTypu].Nodes[indexVyrobce].Nodes.Add(listVozidel[index].Model).Nodes.Add(listVozidel[index].Id.ToString(), listVozidel[index].SPZ).Tag = listVozidel[index].Id;
                     }
 
                     else    // Pokud se změnila SPZ oproti předchozímu kolu, tak zapíše pouze novou SPZ
                     {
-                        treeView.Nodes[indexTypu].Nodes[indexVyrobce].Nodes[indexModelu].Nodes.Add(listVozidel[index].SPZ).Tag = listVozidel[index].Id;
+                        treeView.Nodes[indexTypu].Nodes[indexVyrobce].Nodes[indexModelu].Nodes.Add(listVozidel[index].Id.ToString(), listVozidel[index].SPZ).Tag = listVozidel[index].Id;
                     }
 
                 }
                 else    // Zapíše všechny vlastnosti prvního vozu v seznamu
                 {
-                    treeView.Nodes.Add(listVozidel[index].Typ).Nodes.Add(listVozidel[index].Vyrobce).Nodes.Add(listVozidel[index].Model).Nodes.Add(listVozidel[index].SPZ).Tag = listVozidel[index].Id;
+                    treeView.Nodes.Add(listVozidel[index].Typ).Nodes.Add(listVozidel[index].Vyrobce).Nodes.Add(listVozidel[index].Model).Nodes.Add(listVozidel[index].Id.ToString(), listVozidel[index].SPZ).Tag = listVozidel[index].Id;
 
                 }
             }
         }
-
-        // Zabezpečí, aby byl v checkedListBoxu vybraný pouze jeden prvek
-        private void checkedListBox_OneCheck(object sender, ItemCheckEventArgs e)
-        {
-            if (e.NewValue == CheckState.Checked && ((CheckedListBox)sender).CheckedItems.Count != 0)
-            {
-                CheckedListBox.CheckedIndexCollection vybrane = ((CheckedListBox)sender).CheckedIndices;
-                for (int index = 0; index < vybrane.Count; index++)
-                {
-                    if (vybrane[index] != e.Index)
-                    {
-                        ((CheckedListBox)sender).SetItemChecked(vybrane[index], false);
-                    }
-                }
-            }
-        }
+      
 
         #region Login
 
@@ -222,7 +195,14 @@ namespace VozovyPark
                 aktualniUzivatel.AktualniPrihlaseni = DateTime.Now;
 
                 // Zobrazí informace o přihlášeném uživateli
-                labelPosledniPrihlaseni.Text = "Naposledy přihlášen: " + aktualniUzivatel.PosledniPrihlaseni;
+                if(aktualniUzivatel.PosledniPrihlaseni != new DateTime(1, 1, 1))
+                {
+                    labelPosledniPrihlaseni.Text = "Naposledy přihlášen: " + aktualniUzivatel.PosledniPrihlaseni;
+                }
+                else
+                {
+                    labelPosledniPrihlaseni.Text = "Naposledy přihlášen: " + aktualniUzivatel.AktualniPrihlaseni;
+                }
                 labelPrihlasenyUzivatel.Text = "Uživatel: " + aktualniUzivatel.UzivatelskeJmeno;
                 labelPosledniPrihlaseni.Visible = true;
                 labelPrihlasenyUzivatel.Visible = true;
@@ -284,84 +264,177 @@ namespace VozovyPark
         // Načte seznam uživatelů z databáze při otevření panelu
         private void UzivateleNacistDatabazi()
         {
-            uzivateleSeznamUzivatelu = SpravceDatabaze.NajitZaznam(new Uzivatele());
+            //Vymaže seznam,aby nevznikly duplikátní hodnoty
             listBoxUzivateleSeznamUzivatelu.Items.Clear();
-            foreach (Uzivatele u in uzivateleSeznamUzivatelu)
+
+            // Najde uživatele v databází a zapíše je do listu
+            foreach (Uzivatele u in SpravceDatabaze.SeznamUzivatelu())
             {
-                listBoxUzivateleSeznamUzivatelu.Items.Add($"{u.Prijmeni.ToUpper()} {u.Jmeno}");
+                listBoxUzivateleSeznamUzivatelu.Items.Add(new ListBoxItem(u.ToString(), u.Id));
+            }
+
+            // Pokud je vlistu alespoň jeden záznam, tak vybere první záznam
+            if (listBoxUzivateleSeznamUzivatelu.Items.Count != 0)
+            {
+                listBoxUzivateleSeznamUzivatelu.SelectedIndex = 0;
             }
         }
 
         // Odemyká a zamyká ovládací prvky pro úpravu a přídání uživatele do systému
         private void UzivateleOdemknoutZamknoutOvladani(object sender, EventArgs e)
         {
-            bool pridatNeboUpravit = false;
-            if (sender == buttonUzivatelePridatUzivatele | sender == buttonUzivateleUpravitUzivatele)
+            // Určuje, zda se má detail odemknout nebo zamknout
+            bool odemknout = false;
+
+            if (sender == buttonUzivatelePridat | sender == buttonUzivateleUpravit)
             {
-                pridatNeboUpravit = true;
-
-                if (sender == buttonUzivatelePridatUzivatele)
-                {
-                    uzivateleUpravitUzivatele = false;
-
-                    textBoxUzivateleJmeno.Text = "";
-                    textBoxUzivatelePrijmeni.Text = "";
-                    textBoxUzivateleJmenoUzivatele.Text = "";
-                    checkBoxUzivateleVynutitZmenuHesla.Checked = true;
-                }
-                else
-                {
-                    uzivateleUpravitUzivatele = true;
-
-                    if (uzivateleSeznamUzivatelu[listBoxUzivateleSeznamUzivatelu.SelectedIndex].Heslo != "")
-                    {
-                        checkBoxUzivateleVynutitZmenuHesla.Enabled = true;
-                    }
-                }
+                odemknout = true;
             }
             else
             {
-                checkBoxUzivateleVynutitZmenuHesla.Enabled = false;
+                buttonUzivatelePotvrdit.Text = "Potvrdit";
             }
 
-            textBoxUzivateleJmeno.Enabled = pridatNeboUpravit;
-            textBoxUzivatelePrijmeni.Enabled = pridatNeboUpravit;
-            textBoxUzivateleJmenoUzivatele.Enabled = pridatNeboUpravit;
-            buttonUzivatelePotvrditUzivatele.Enabled = pridatNeboUpravit;
-            buttonUzivateleZrusitUzivatele.Enabled = pridatNeboUpravit;
-            buttonUzivatelePridatUzivatele.Enabled = !pridatNeboUpravit;
-            buttonUzivateleUpravitUzivatele.Enabled = !pridatNeboUpravit;
-            buttonUzivateleOdebratUzivatele.Enabled = !pridatNeboUpravit;
-            listBoxUzivateleSeznamUzivatelu.Enabled = !pridatNeboUpravit;
-            buttonUzivateleZpet.Enabled = !pridatNeboUpravit;
+            // Odemkne a zamkne prvky, aby nevznikly zakázané stavy
+            groupBoxUzivateleDetail.Enabled = odemknout;
+            buttonUzivatelePridat.Enabled = !odemknout;
+            buttonUzivateleUpravit.Enabled = !odemknout;
+            buttonUzivateleOdebrat.Enabled = !odemknout;
+            listBoxUzivateleSeznamUzivatelu.Enabled = !odemknout;
+            buttonUzivateleZpet.Enabled = !odemknout;
+
+            if (sender == buttonUzivatelePridat)
+            {
+                // Vyresetuje detail, aby uživateli nepřekážely předchozí hodnoty
+                textBoxUzivateleJmeno.Text = "";
+                textBoxUzivatelePrijmeni.Text = "";
+                textBoxUzivateleJmenoUzivatele.Text = "";
+                checkBoxUzivateleVynutitZmenuHesla.Checked = true;
+                checkBoxUzivateleVynutitZmenuHesla.Enabled = false;
+
+                // Nastaví tlačítko, aby bylo poznat, zda dochází k úpravě či přidání a uloží tuto informaci do vlastnosti Tag
+                buttonUzivatelePotvrdit.Text = "Přidat";
+                buttonUzivatelePotvrdit.Tag = false;
+            }
+            else
+            {
+                // Nastaví tlačítko, aby bylo poznat, zda dochází k úpravě či přidání a uloží tuto informaci do vlastnosti Tag
+                buttonUzivatelePotvrdit.Text = "Upravit";
+                buttonUzivatelePotvrdit.Tag = true;
+
+                // Pokud se uživatel ještě nepřihlásil, tak nedovolí zrušit vynucení změny hesla
+                if (SpravceDatabaze.Prikaz.Find<Uzivatele>(((ListBoxItem)listBoxUzivateleSeznamUzivatelu.SelectedItem).Tag).PosledniPrihlaseni == new DateTime(1, 1, 1))
+                {
+                    checkBoxUzivateleVynutitZmenuHesla.Enabled = false;
+                }
+
+            }
         }
 
         // Přidá uživatele, případně upraví existujícího uživatele v databázi a načte znovu databázi
         private void ButtonUzivatelePotvrditUzivatele_Click(object sender, EventArgs e)
         {
-            Uzivatele novyUzivatel = new Uzivatele(textBoxUzivateleJmeno.Text, textBoxUzivatelePrijmeni.Text,
-                                                   textBoxUzivateleJmenoUzivatele.Text, "", DateTime.Now,
-                                                   checkBoxUzivateleVynutitZmenuHesla.Checked, false);
-            if (uzivateleUpravitUzivatele)
+            // Určuje, zda všechny operace proběhly bez chyb
+            bool povedloSe = true;
+
+            // Připraví strukturu nového uživatele a načte původního uživatele při úpravě
+            Uzivatele novyUzivatel = new Uzivatele();
+            Uzivatele puvodniUzivatel = new Uzivatele();
+
+            // Kontroluje a ukládá jméno
+            if (textBoxUzivateleJmeno.Text.Length > 0)
             {
-                novyUzivatel.Id = uzivateleSeznamUzivatelu[listBoxUzivateleSeznamUzivatelu.SelectedIndex].Id;
-                novyUzivatel.PosledniPrihlaseni = uzivateleSeznamUzivatelu[listBoxUzivateleSeznamUzivatelu.SelectedIndex].PosledniPrihlaseni;
-                SpravceDatabaze.UpravitZaznam(novyUzivatel);
+                novyUzivatel.Jmeno = textBoxUzivateleJmeno.Text;
             }
             else
             {
-                if (SpravceDatabaze.Prikaz.Query<Uzivatele>($"SELECT * FROM uzivatele WHERE uzivatelskeJmeno = \'{novyUzivatel.UzivatelskeJmeno}\'").Count == 0)
+                povedloSe = false;
+                Oznameni("Není vyplněno jméno!");
+            }
+
+            // Kontroluje a ukládá příjmení
+            if (checkBoxUzivateleAdministrator.Checked || textBoxUzivatelePrijmeni.Text.Length > 0)
+            {
+                novyUzivatel.Prijmeni = textBoxUzivatelePrijmeni.Text;
+            }
+            else
+            {
+                povedloSe = false;
+                Oznameni("Není vyplněno příjmení!");
+            }
+
+            // Kontroluje a ukládá uživatelské jméno
+            if (textBoxUzivateleJmenoUzivatele.Text.Length > 0)
+            {
+                novyUzivatel.UzivatelskeJmeno = textBoxUzivateleJmenoUzivatele.Text;
+            }
+            else
+            {
+                povedloSe = false;
+                Oznameni("Není vyplněno uživatelské jméno!");
+            }
+
+            // Pokud probíhá úprava uživatele
+            if ((bool)buttonUzivatelePotvrdit.Tag)
+            {
+                // Načte z databáze uživatele před úpravou
+                puvodniUzivatel = SpravceDatabaze.Prikaz.Find<Uzivatele>(((ListBoxItem)listBoxUzivateleSeznamUzivatelu.SelectedItem).Tag);
+
+                // Kontroluje zda již neexistuje toto uživatelské jméno
+                if (SpravceDatabaze.Prikaz.Query<Uzivatele>($"SELECT id FROM uzivatele WHERE id != '{puvodniUzivatel.Id}' AND uzivatelskeJmeno = '{novyUzivatel.UzivatelskeJmeno}'").Count != 0)
                 {
-                    SpravceDatabaze.PridatZaznam(novyUzivatel);
-                    UzivateleOdemknoutZamknoutOvladani(sender, e);
-                    UzivateleNacistDatabazi();
-                }
-                else
-                {
+                    povedloSe = false;
                     Oznameni("Toto uživatelské jméno již existuje!");
                 }
 
+                // Kontroluje zda není odstraňován poslední administrátor
+                if (checkBoxUzivateleAdministrator.Checked != true && SpravceDatabaze.Prikaz.Query<Uzivatele>($"SELECT id FROM uzivatele WHERE id != '{puvodniUzivatel.Id}' AND administrator = true").Count == 0)
+                {
+                    povedloSe = false;
+                    Oznameni("Odstraňujete posledního administrátora!");
+                }
             }
+            else
+            {
+                // Kontroluje zda již neexistuje toto uživatelské jméno
+                if (SpravceDatabaze.Prikaz.Query<Uzivatele>($"SELECT id FROM uzivatele WHERE uzivatelskeJmeno = '{novyUzivatel.UzivatelskeJmeno}'").Count != 0)
+                {
+                    povedloSe = false;
+                    Oznameni("Toto uživatelské jméno již existuje!");
+                }
+            }
+
+            // Pokud vše proběhlo bez problémů
+            if (povedloSe)
+            {
+                // Přečte, zda je uživatel Administrátor
+                novyUzivatel.Administrator = checkBoxUzivateleAdministrator.Checked;
+
+                    if ((bool)buttonUzivatelePotvrdit.Tag)
+                    {
+                        // Pokud jde o úpravu, tak zkopíruje neměnné hodnoty a aktualizuje záznam
+                        novyUzivatel.Id = puvodniUzivatel.Id;
+                        novyUzivatel.PosledniPrihlaseni = puvodniUzivatel.PosledniPrihlaseni;
+                        novyUzivatel.Heslo = puvodniUzivatel.Heslo;
+                        novyUzivatel.NutnaZmenaHesla = checkBoxUzivateleVynutitZmenuHesla.Checked;
+
+                        SpravceDatabaze.UpravitZaznam(novyUzivatel);
+                    }
+                    else
+                    {
+                        // Pokud jde o přidání, tak nastaví neměnné hodnoty a přidá záznam
+                        novyUzivatel.NutnaZmenaHesla = true;
+                        novyUzivatel.PosledniPrihlaseni = new DateTime(1, 1, 1);
+                        novyUzivatel.Heslo = "";
+
+                        SpravceDatabaze.PridatZaznam(novyUzivatel);
+                    }
+
+                    // Zamkne detail a aktualizuje seznam
+                    UzivateleOdemknoutZamknoutOvladani(sender, e);
+                    UzivateleNacistDatabazi();
+            }
+
         }
 
         // Zruší úpravu / přídání uživatele do systému
@@ -374,35 +447,72 @@ namespace VozovyPark
         // Zobrazuje podrobnosti o uživateli pokud je zvolen v seznamu
         private void ListBoxUzivateleSeznamUzivatelu_SelectedIndexChanged(object sender, EventArgs e)
         {
-            labelUzivateleNaposledyPrihlasen.Text = "Naposledy přihlášen: " + uzivateleSeznamUzivatelu[listBoxUzivateleSeznamUzivatelu.SelectedIndex].PosledniPrihlaseni;
-            textBoxUzivateleJmeno.Text = uzivateleSeznamUzivatelu[listBoxUzivateleSeznamUzivatelu.SelectedIndex].Jmeno;
-            textBoxUzivatelePrijmeni.Text = uzivateleSeznamUzivatelu[listBoxUzivateleSeznamUzivatelu.SelectedIndex].Prijmeni;
-            textBoxUzivateleJmenoUzivatele.Text = uzivateleSeznamUzivatelu[listBoxUzivateleSeznamUzivatelu.SelectedIndex].UzivatelskeJmeno;
-            checkBoxUzivateleVynutitZmenuHesla.Checked = uzivateleSeznamUzivatelu[listBoxUzivateleSeznamUzivatelu.SelectedIndex].NutnaZmenaHesla;
-            buttonUzivateleUpravitUzivatele.Enabled = true;
-            buttonUzivateleOdebratUzivatele.Enabled = true;
+            if (listBoxUzivateleSeznamUzivatelu.SelectedIndex != -1)
+            {
+                // Načte uživatele z databáze
+                Uzivatele uzivatel = SpravceDatabaze.Prikaz.Find<Uzivatele>(((ListBoxItem)listBoxUzivateleSeznamUzivatelu.SelectedItem).Tag);
+                
+                // Zobrazí poslední přihlášení uživatele
+                if (uzivatel.PosledniPrihlaseni != new DateTime(1, 1, 1))
+                {
+                    labelUzivateleNaposledyPrihlasen.Text = "Naposledy přihlášen: " + uzivatel.PosledniPrihlaseni;
+                }
+                else
+                {
+                    labelUzivateleNaposledyPrihlasen.Text = "Naposledy přihlášen: Uživatel zatím nebyl přihlášen";
+                }
+                // Zobrazí další podrobnosti uživatele
+                textBoxUzivateleJmeno.Text = uzivatel.Jmeno;
+                textBoxUzivatelePrijmeni.Text = uzivatel.Prijmeni;
+                textBoxUzivateleJmenoUzivatele.Text = uzivatel.UzivatelskeJmeno;
+                checkBoxUzivateleVynutitZmenuHesla.Checked = uzivatel.NutnaZmenaHesla;
+                checkBoxUzivateleAdministrator.Checked = uzivatel.Administrator;
+
+                // Povolí tlačítka pro práci se záznamem
+                buttonUzivateleUpravit.Enabled = true;
+                buttonUzivateleOdebrat.Enabled = true;
+            }
+            else
+            {
+                // Zakáže tlačítka pro práci se záznamem
+                buttonUzivateleUpravit.Enabled = false;
+                buttonUzivateleOdebrat.Enabled = false;
+            }
         }
 
         // Odebere uživatele z databáze
         private void ButtonUzivateleOdebratUzivatele_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show(
-                $"Opravu chcete odstranit uživatele {uzivateleSeznamUzivatelu[listBoxUzivateleSeznamUzivatelu.SelectedIndex].Jmeno} {uzivateleSeznamUzivatelu[listBoxUzivateleSeznamUzivatelu.SelectedIndex].Prijmeni}?"
-                , "Odstranit uživatele",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Information);
+            // Najde uživatele v databázi
+            Uzivatele uzivatel = SpravceDatabaze.Prikaz.Find<Uzivatele>(((ListBoxItem)listBoxUzivateleSeznamUzivatelu.SelectedItem).Tag);
 
-            if (result == DialogResult.Yes)
+            // Zkontroluje, zda nechceme odstranit posledního administrátora
+            if (uzivatel.Administrator && SpravceDatabaze.Prikaz.Query<Uzivatele>($"SELECT id FROM uzivatele WHERE administrator = 'true' AND id != '{uzivatel.Id}'").Count == 0)
             {
-                SpravceDatabaze.OdstranitZaznam(uzivateleSeznamUzivatelu[listBoxUzivateleSeznamUzivatelu.SelectedIndex]);
-                UzivateleNacistDatabazi();
+                Oznameni("Odstraňujete posledního administrátora!");
+            }
+            else
+            {
+                // Vyžádá si potvrzení odstranění od uživatele
+                DialogResult result = MessageBox.Show(
+                         $"Opravu chcete odstranit uživatele {uzivatel.Jmeno} {uzivatel.Prijmeni}?"
+                         , "Odstranit uživatele",
+                         MessageBoxButtons.YesNo,
+                         MessageBoxIcon.Information);
+
+                // Pokud uživatel potvrdí odstranění, odstraní záznam a aktualizuje seznam
+                if (result == DialogResult.Yes)
+                {
+                    SpravceDatabaze.OdstranitZaznam(uzivatel);
+                    UzivateleNacistDatabazi();
+                }
             }
         }
 
         // Generuje uživatelské jméno při vytvoření uživatele
         private void UzivateleGeneratorUzivatelskehoJmena(object sender, EventArgs e)
         {
-            if (!uzivateleUpravitUzivatele & textBoxUzivateleJmeno.Text.Length != 0 && textBoxUzivatelePrijmeni.Text.Length != 0)
+            if (!(bool)buttonUzivatelePotvrdit.Tag & textBoxUzivateleJmeno.Text.Length != 0 && textBoxUzivatelePrijmeni.Text.Length != 0)
             {
                 string text = textBoxUzivateleJmeno.Text.ToLower() + "." + textBoxUzivatelePrijmeni.Text.ToLower();
                 text = text.Normalize(NormalizationForm.FormD);
@@ -425,7 +535,7 @@ namespace VozovyPark
             listBoxVozidlaModel.Items.Clear();
 
             // Načíst seznam z databáze
-            vozidlaSeznamVozidel = SpravceDatabaze.Prikaz.Query<Vozidla>("SELECT * FROM vozidla ORDER BY typ, vyrobce, model, spz");
+            List<Vozidla> vozidlaSeznamVozidel = SpravceDatabaze.Prikaz.Query<Vozidla>("SELECT * FROM vozidla ORDER BY typ, vyrobce, model, spz");
 
             NaplnitTreeView(treeViewVozidlaSeznamVozidel, vozidlaSeznamVozidel); // Naplní TreeView seznamem
 
@@ -455,10 +565,10 @@ namespace VozovyPark
         {
             bool pridatNeboUpravit = false;
 
-            if (sender == buttonVozidlaPridatVozidlo | sender == buttonVozidlaUpravitVozidlo)
+            if (sender == buttonVozidlaPridat | sender == buttonVozidlaUpravit)
             {
                 pridatNeboUpravit = true;
-                if (sender == buttonVozidlaPridatVozidlo)
+                if (sender == buttonVozidlaPridat)
                 {
                     maskedTextBoxVozidlaSPZ.Text = "";
                     textBoxVozidlaTyp.Text = "";
@@ -466,30 +576,26 @@ namespace VozovyPark
                     textBoxVozidlaModel.Text = "";
                     numericUpDownVozidlaSpotreba.Value = 0;
 
-                    vozidlaUpravitVozidlo = false;
+                    // Nastaví tlačítko, aby bylo poznat, že dochází k přidání
+                    buttonVozidlaPotvrdit.Text = "Přidat";
+                    buttonVozidlaPotvrdit.Tag = false;
                 }
                 else
                 {
-                    vozidlaUpravitVozidlo = true;
+                    // Nastaví tlačítko, aby bylo poznat, že dochází k úpravě 
+                    buttonVozidlaPotvrdit.Text = "Upravit";
+                    buttonVozidlaPotvrdit.Tag = true;
                 }
             }
+            else
+            {
+                buttonVozidlaPotvrdit.Text = "Potvrdit";
+            }
 
-            maskedTextBoxVozidlaSPZ.Enabled = pridatNeboUpravit;
-            listBoxVozidlaVyrobce.Enabled = pridatNeboUpravit;
-            textBoxVozidlaVyrobce.Enabled = pridatNeboUpravit;
-            listBoxVozidlaModel.Enabled = pridatNeboUpravit;
-            textBoxVozidlaModel.Enabled = pridatNeboUpravit;
-            listBoxVozidlaTyp.Enabled = pridatNeboUpravit;
-            textBoxVozidlaTyp.Enabled = pridatNeboUpravit;
-            buttonVozidlaPridatVyrobce.Enabled = pridatNeboUpravit;
-            buttonVozidlaPridatModel.Enabled = pridatNeboUpravit;
-            buttonVozidlaPridatTyp.Enabled = pridatNeboUpravit;
-            numericUpDownVozidlaSpotreba.Enabled = pridatNeboUpravit;
-            buttonVozidlaPotvrditVozidlo.Enabled = pridatNeboUpravit;
-            buttonVozidlaZrusitVozidlo.Enabled = pridatNeboUpravit;
-            buttonVozidlaPridatVozidlo.Enabled = !pridatNeboUpravit;
-            buttonVozidlaUpravitVozidlo.Enabled = !pridatNeboUpravit;
-            buttonVozidlaOdebratVozidlo.Enabled = !pridatNeboUpravit;
+            groupBoxVozidlaDetail.Enabled = pridatNeboUpravit;
+            buttonVozidlaPridat.Enabled = !pridatNeboUpravit;
+            buttonVozidlaUpravit.Enabled = !pridatNeboUpravit;
+            buttonVozidlaOdebrat.Enabled = !pridatNeboUpravit;
             buttonVozidlaServisniZaznamy.Enabled = !pridatNeboUpravit;
             treeViewVozidlaSeznamVozidel.Enabled = !pridatNeboUpravit;
             buttonVozidlaZpet.Enabled = !pridatNeboUpravit;
@@ -498,21 +604,63 @@ namespace VozovyPark
         // Přidá vozidla, případně upraví existující vozidla v databázi a načte znovu databázi
         private void ButtonVozidlaPotvrditVozidlo_Click(object sender, EventArgs e)
         {
-            if (maskedTextBoxVozidlaSPZ.MaskCompleted
-                && listBoxVozidlaVyrobce.SelectedIndex != -1
-                && listBoxVozidlaModel.SelectedIndex != -1
-                && listBoxVozidlaTyp.SelectedIndex != -1)
+            bool povedloSe = true;
+            Vozidla noveVozidlo = new Vozidla();
+
+            // Zkontroluje a uloží SPZ
+            if (maskedTextBoxVozidlaSPZ.MaskCompleted)
             {
-                Vozidla noveVozidlo = new Vozidla(maskedTextBoxVozidlaSPZ.Text,
-                                  listBoxVozidlaVyrobce.Items[listBoxVozidlaVyrobce.SelectedIndex].ToString(),
-                                  listBoxVozidlaModel.Items[listBoxVozidlaModel.SelectedIndex].ToString(),
-                                  listBoxVozidlaTyp.Items[listBoxVozidlaTyp.SelectedIndex].ToString(),
-                                  numericUpDownVozidlaSpotreba.Value);
+                noveVozidlo.SPZ = maskedTextBoxVozidlaSPZ.Text;
+            }
+            else
+            {
+                povedloSe = false;
+                Oznameni("Nebyla vyplněna SPZ!");
+            }
+
+            // Zkontroluje a uloží výrobce vozidla
+            if (listBoxVozidlaVyrobce.SelectedIndex != -1)
+            {
+                noveVozidlo.Vyrobce = listBoxVozidlaVyrobce.SelectedItem.ToString();
+            }
+            else
+            {
+                povedloSe = false;
+                Oznameni("Nebyl vybrán výrobce!");
+            }
+
+            // Zkontroluje a uloží model vozidla
+            if (listBoxVozidlaModel.SelectedIndex != -1)
+            {
+                noveVozidlo.Model = listBoxVozidlaModel.SelectedItem.ToString();
+            }
+            else
+            {
+                povedloSe = false;
+                Oznameni("Nebyl vybrán model!");
+            }
+
+            // Zkontroluje a uloží typ vozidla
+            if (listBoxVozidlaTyp.SelectedIndex != -1)
+            {
+                noveVozidlo.Typ = listBoxVozidlaTyp.SelectedItem.ToString();
+            }
+            else
+            {
+                povedloSe = false;
+                Oznameni("Nebyl vybrán typ!");
+            }
+
+            // Pokud vše proběhlo v pořádku, tak načte spotřebu a pokusí se vozidlo uložit
+            if (povedloSe)
+            {
+                noveVozidlo.Spotreba = numericUpDownVozidlaSpotreba.Value;
 
                 if (SpravceDatabaze.Prikaz.Query<Vozidla>($"SELECT * FROM vozidla WHERE spz = \"{noveVozidlo.SPZ}\"").Count == 0)
                 {
-                    if (vozidlaUpravitVozidlo)
+                    if ((bool)buttonVozidlaPotvrdit.Tag)
                     {
+                        // Pokud se vozidlo pouze upravuje, tak se ještě nastaví id vozidla
                         noveVozidlo.Id = (int)treeViewVozidlaSeznamVozidel.SelectedNode.Tag;
                         SpravceDatabaze.UpravitZaznam(noveVozidlo);
                     }
@@ -550,14 +698,14 @@ namespace VozovyPark
                 listBoxVozidlaTyp.SelectedIndex = listBoxVozidlaTyp.Items.IndexOf(vozidlo.Typ);
                 maskedTextBoxVozidlaSPZ.Text = vozidlo.SPZ;
                 numericUpDownVozidlaSpotreba.Value = vozidlo.Spotreba;
-                buttonVozidlaUpravitVozidlo.Enabled = true;
-                buttonVozidlaOdebratVozidlo.Enabled = true;
+                buttonVozidlaUpravit.Enabled = true;
+                buttonVozidlaOdebrat.Enabled = true;
                 buttonVozidlaServisniZaznamy.Enabled = true;
             }
             else
             {
-                buttonVozidlaUpravitVozidlo.Enabled = false;
-                buttonVozidlaOdebratVozidlo.Enabled = false;
+                buttonVozidlaUpravit.Enabled = false;
+                buttonVozidlaOdebrat.Enabled = false;
                 buttonVozidlaServisniZaznamy.Enabled = false;
             }
         }
@@ -599,161 +747,268 @@ namespace VozovyPark
             }
         }
 
-        // Zabraňuje zadání speciálních znaků do SPZ
-        private void textBoxVozidlaSPZ_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            e.Handled = !(char.IsLetterOrDigit(e.KeyChar) | char.IsControl(e.KeyChar) | char.IsWhiteSpace(e.KeyChar));
-        }
-
         #endregion
 
         #region SpravaRezervaci
 
-        // Odemyká a zamyká pomocné ovládací prvky
-        private void RezervaceOdemknoutZamknoutFormular(object sender)
-        {
-            bool odemknout = false; // Určuje zda odemykáme nebo zamykáme formulář uživatelského rozhraní
-
-            if (sender == buttonRezervacePridatRezervaci | sender == buttonRezervaceUpravit)
-            {
-                odemknout = true;
-            }
-
-            listViewRezervaceSeznamUzivatelu.Enabled = odemknout;
-            textBoxRezervaceUzivatel.Enabled = odemknout;
-            buttonRezervaceHledat.Enabled = odemknout;
-            treeViewRezervaceSeznamVozidel.Enabled = odemknout;
-            dateTimePickerRezervaceRezervaceOdDatum.Enabled = odemknout;
-            dateTimePickerRezervaceRezervaceOdCas.Enabled = odemknout;
-            dateTimePickerRezervaceRezervaceDoDatum.Enabled = odemknout;
-            dateTimePickerRezervaceRezervaceDoCas.Enabled = odemknout;
-            buttonRezervacePotvrdit.Enabled = odemknout;
-            buttonRezervaceZrusit.Enabled = odemknout;
-
-            checkBoxRezervaceZobrazitPredchozi.Enabled = !odemknout;
-            treeViewRezervaceSeznamRezervaci.Enabled = !odemknout;
-            radioButtonRezervacePodleUzivatelu.Enabled = !odemknout;
-            radioButtonRezervacePodleVozidel.Enabled = !odemknout;
-            buttonRezervacePridatRezervaci.Enabled = !odemknout;
-            buttonRezervaceUpravit.Enabled = !odemknout;
-            buttonRezervaceOdebratRezervaci.Enabled = !odemknout;
-            buttonRezervaceZpet.Enabled = !odemknout;
-            checkedListBoxRezervaceSeznamRezervaci.Enabled = !odemknout;
-            checkedListBox_OneCheck(checkedListBoxRezervaceSeznamRezervaci, new ItemCheckEventArgs(-1, CheckState.Checked, CheckState.Checked));
-        }
-
         // Načte všechny seznamy na panelu
         private void RezervaceNacistDatabazi()
         {
+            groupBoxRezervaceDetail.Enabled = false;
             // Vyčistí seznamy, kdyby zde zůstalo něco z minula
             treeViewRezervaceSeznamRezervaci.Nodes.Clear();
-            listViewRezervaceSeznamUzivatelu.Items.Clear();
+            listBoxRezervaceSeznamUzivatelu.Items.Clear();
             treeViewRezervaceSeznamVozidel.Nodes.Clear();
-            checkedListBoxRezervaceSeznamRezervaci.Items.Clear();
-
-            // Zakáže úpravu a odstranění rezervace, která by mohla zůstat povolená
-            checkedListBoxRezervaceSeznamRezervaci.Enabled = false;
-            buttonRezervaceOdebratRezervaci.Enabled = false;
-            buttonRezervaceUpravit.Enabled = false;
+            listBoxRezervaceSeznamRezervaci.Items.Clear();
 
             // Načíst seznam z databáze
             List<Uzivatele> rezervaceSeznamUzivatelu = SpravceDatabaze.Prikaz.Query<Uzivatele>("SELECT id, jmeno, prijmeni FROM uzivatele ORDER BY prijmeni, jmeno");
             List<Vozidla> rezervaceSeznamVozidel = SpravceDatabaze.Prikaz.Query<Vozidla>("SELECT * FROM vozidla ORDER BY typ, vyrobce, model, spz");
-            List<Vozidla> rezervaceSeznamRezervovanychVozidel;
-            if (checkBoxRezervaceZobrazitPredchozi.Checked)
+
+            //Načte do hlavního seznamu vozidla nebo uživatele
+            if (radioButtonRezervacePodleVozidel.Checked)
             {
-                rezervaceSeznamRezervovanychVozidel = SpravceDatabaze.Prikaz.Query<Vozidla>("SELECT DISTINCT vozidla.id, typ, vyrobce, model, spz FROM vozidla, rezervace WHERE vozidla.id = rezervace.idVozidla ORDER BY typ, vyrobce, model, spz");
-            }
-            else
-            {
-                rezervaceSeznamRezervovanychVozidel = SpravceDatabaze.Prikaz.Query<Vozidla>($"SELECT DISTINCT vozidla.id, typ, vyrobce, model, spz FROM vozidla, rezervace WHERE rezervace.rezervaceDo > '{DateTime.Now.Ticks}' AND vozidla.id = rezervace.idVozidla ORDER BY typ, vyrobce, model, spz");
-            }
-             
-
-            NaplnitTreeView(treeViewRezervaceSeznamVozidel, rezervaceSeznamVozidel);
-            NaplnitTreeView(treeViewRezervaceSeznamRezervaci, rezervaceSeznamRezervovanychVozidel);
-
-            foreach (Uzivatele u in rezervaceSeznamUzivatelu)
-            {
-                listViewRezervaceSeznamUzivatelu.Items.Add($"{u.Prijmeni.ToUpper()} {u.Jmeno}").Tag = u.Id;
-            }
-        }
-
-        // Nastaví seznam rezervací po zvolení dotyčného vozidla
-        private void treeViewRezervaceSeznamRezervaci_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-           checkedListBoxRezervaceSeznamRezervaci.Items.Clear();
-
-            if (treeViewRezervaceSeznamRezervaci.SelectedNode != null && treeViewRezervaceSeznamRezervaci.SelectedNode.Level == 3)
-            {
-                checkedListBoxRezervaceSeznamRezervaci.Enabled = true;
-
-                List<Rezervace> rezervovaneCasy;
-
+                List<Vozidla> rezervaceSeznamRezervovanychVozidel;
                 if (checkBoxRezervaceZobrazitPredchozi.Checked)
                 {
-                    rezervovaneCasy = SpravceDatabaze.Prikaz.Query<Rezervace>($"SELECT id, rezervaceOd, rezervaceDo FROM rezervace WHERE idVozidla = '{treeViewRezervaceSeznamRezervaci.SelectedNode.Tag}' ORDER BY rezervaceOd");
+                    rezervaceSeznamRezervovanychVozidel = SpravceDatabaze.Prikaz.Query<Vozidla>("SELECT DISTINCT vozidla.id, typ, vyrobce, model, spz FROM vozidla, rezervace WHERE vozidla.id = rezervace.idVozidla ORDER BY typ, vyrobce, model, spz");
                 }
                 else
                 {
-                    rezervovaneCasy = SpravceDatabaze.Prikaz.Query<Rezervace>($"SELECT id, rezervaceOd, rezervaceDo FROM rezervace WHERE rezervace.rezervaceDo > '{DateTime.Now.Ticks}' AND idVozidla = '{treeViewRezervaceSeznamRezervaci.SelectedNode.Tag}' ORDER BY rezervaceOd");
+                    rezervaceSeznamRezervovanychVozidel = SpravceDatabaze.Prikaz.Query<Vozidla>($"SELECT DISTINCT vozidla.id, typ, vyrobce, model, spz FROM vozidla, rezervace WHERE rezervace.rezervaceDo > '{DateTime.Now.Ticks}' AND vozidla.id = rezervace.idVozidla ORDER BY typ, vyrobce, model, spz");
                 }
-                
-                foreach (Rezervace r in rezervovaneCasy)
+
+                // Naplnit seznam
+                NaplnitTreeView(treeViewRezervaceSeznamRezervaci, rezervaceSeznamRezervovanychVozidel);
+            }
+            else
+            {
+                List<Uzivatele> rezervaceSeznamUziveteluSRezervaci;
+                if (checkBoxRezervaceZobrazitPredchozi.Checked)
                 {
-                    checkedListBoxRezervaceSeznamRezervaci.Items.Add(new CheckedListBoxItem($"{r.RezervaceOd} - {r.RezervaceDo}", r.Id));
+                    rezervaceSeznamUziveteluSRezervaci = SpravceDatabaze.Prikaz.Query<Uzivatele>("SELECT DISTINCT uzivatele.id, jmeno, prijmeni, administrator FROM uzivatele, rezervace WHERE uzivatele.id = rezervace.idUzivatele ORDER BY administrator, prijmeni, jmeno");
+                }
+                else
+                {
+                    rezervaceSeznamUziveteluSRezervaci = SpravceDatabaze.Prikaz.Query<Uzivatele>($"SELECT DISTINCT uzivatele.id, jmeno, prijmeni, administrator FROM uzivatele, rezervace WHERE rezervace.rezervaceDo > '{DateTime.Now.Ticks}' AND uzivatele.id = rezervace.idUzivatele ORDER BY administrator, prijmeni, jmeno");
+                }
+
+                // Naplní seznam uživateli
+                treeViewRezervaceSeznamRezervaci.Nodes.Add("Administrátor");
+                treeViewRezervaceSeznamRezervaci.Nodes.Add("Uživatel");
+
+                foreach (Uzivatele u in rezervaceSeznamUziveteluSRezervaci)
+                {
+                    if (u.Administrator)
+                    {
+                        treeViewRezervaceSeznamRezervaci.Nodes[0].Nodes.Add(u.ToString()).Tag = u.Id;
+                    }
+                    else
+                    {
+                        treeViewRezervaceSeznamRezervaci.Nodes[1].Nodes.Add(u.ToString()).Tag = u.Id;
+                    }
+                }
+            }
+
+            // Naplnit seznamy
+            NaplnitTreeView(treeViewRezervaceSeznamVozidel, rezervaceSeznamVozidel);
+
+            foreach (Uzivatele u in rezervaceSeznamUzivatelu)
+            {
+                listBoxRezervaceSeznamUzivatelu.Items.Add(new ListBoxItem(u.ToString(), u.Id));
+            }
+
+            // Vybere první prvek listu
+            if (treeViewRezervaceSeznamRezervaci.Nodes.Count != 0)
+            {
+                treeViewRezervaceSeznamRezervaci.SelectedNode = treeViewRezervaceSeznamRezervaci.Nodes[0];
+            }
+        }
+
+        // Odemyká a zamyká detail rezervace
+        private void RezervaceOdemknoutZamknoutFormular(object sender)
+        {
+            // Určuje zda odemykáme nebo zamykáme formulář uživatelského rozhraní
+            bool odemknout = false; 
+
+            if (sender == buttonRezervacePridat | sender == buttonRezervaceUpravit)
+            {
+                odemknout = true;
+
+                if (sender == buttonRezervacePridat)
+                {
+                    // Nastaví tlačítko, aby bylo poznat, že dochází k přidání
+                    buttonRezervacePotvrdit.Text = "Přidat";
+                    buttonRezervacePotvrdit.Tag = false;
+                }
+                else
+                {
+                    // Nastaví tlačítko, aby bylo poznat, že dochází k úpravě
+                    buttonRezervacePotvrdit.Text = "Upravit";
+                    buttonRezervacePotvrdit.Tag = true;
                 }
             }
             else
             {
-                checkedListBoxRezervaceSeznamRezervaci.Enabled = false;
-                buttonRezervaceUpravit.Enabled = false;
-                buttonRezervaceOdebratRezervaci.Enabled = false;
+                buttonRezervacePotvrdit.Text = "Potvrdit";
+            }
+
+            // Odemkne pole detailu
+            groupBoxRezervaceDetail.Enabled = odemknout;
+            textBoxRezervaceUzivatel.Text = "";
+
+            // Zamkne hlavní seznamy, které by mohly rušit
+            checkBoxRezervaceZobrazitPredchozi.Enabled = !odemknout;
+            treeViewRezervaceSeznamRezervaci.Enabled = !odemknout;
+            radioButtonRezervacePodleUzivatelu.Enabled = !odemknout;
+            radioButtonRezervacePodleVozidel.Enabled = !odemknout;
+            buttonRezervacePridat.Enabled = !odemknout;
+            buttonRezervaceZpet.Enabled = !odemknout;
+            listBoxRezervaceSeznamRezervaci.Enabled = !odemknout;
+            // Zavolá listBox aby zamkl případně odemkl přidružená tlačítka
+            listBoxRezervaceSeznamRezervaci_SelectedIndexChanged(sender, EventArgs.Empty);
+        }
+
+        // Nastaví seznam rezervací po zvolení dotyčného vozidla
+        private void treeViewRezervaceSeznamRezervaci_AfterSelect(object sender, EventArgs e)
+        {
+            // Vymaže sezam rezervací aby nevznikly duplikátní
+            listBoxRezervaceSeznamRezervaci.Items.Clear();
+
+            // Zkontoroluje zda je vybrané opravdu jedno vozidlo a načte jeho informace
+            if (treeViewRezervaceSeznamRezervaci.SelectedNode != null && ((treeViewRezervaceSeznamRezervaci.SelectedNode.Level == 3 && radioButtonRezervacePodleVozidel.Checked) || treeViewRezervaceSeznamRezervaci.SelectedNode.Level == 1 && radioButtonRezervacePodleUzivatelu.Checked))
+            {
+                // Povolí seznam rezervací a přidružené ovládání
+                listBoxRezervaceSeznamRezervaci.Enabled = true;
+
+                List<Rezervace> rezervovaneCasy;
+
+                if (radioButtonRezervacePodleVozidel.Checked)
+                {
+                    // Načte buď aktuální rezervace nebo všechny rezervace podle vozidel
+                    if (checkBoxRezervaceZobrazitPredchozi.Checked)
+                    {
+                        rezervovaneCasy = SpravceDatabaze.Prikaz.Query<Rezervace>($"SELECT id, rezervaceOd, rezervaceDo FROM rezervace WHERE idVozidla = '{treeViewRezervaceSeznamRezervaci.SelectedNode.Tag}' ORDER BY rezervaceOd");
+                    }
+                    else
+                    {
+                        rezervovaneCasy = SpravceDatabaze.Prikaz.Query<Rezervace>($"SELECT id, rezervaceOd, rezervaceDo FROM rezervace WHERE rezervace.rezervaceDo > '{DateTime.Now.Ticks}' AND idVozidla = '{treeViewRezervaceSeznamRezervaci.SelectedNode.Tag}' ORDER BY rezervaceOd");
+                    }
+                }
+                else
+                {
+                    // Načte buď aktuální rezervace nebo všechny rezervace podle uživatelů
+                    if (checkBoxRezervaceZobrazitPredchozi.Checked)
+                    {
+                        rezervovaneCasy = SpravceDatabaze.Prikaz.Query<Rezervace>($"SELECT id, rezervaceOd, rezervaceDo FROM rezervace WHERE idUzivatele = '{treeViewRezervaceSeznamRezervaci.SelectedNode.Tag}' ORDER BY rezervaceOd");
+                    }
+                    else
+                    {
+                        rezervovaneCasy = SpravceDatabaze.Prikaz.Query<Rezervace>($"SELECT id, rezervaceOd, rezervaceDo FROM rezervace WHERE rezervace.rezervaceDo > '{DateTime.Now.Ticks}' AND idUzivatele = '{treeViewRezervaceSeznamRezervaci.SelectedNode.Tag}' ORDER BY rezervaceOd");
+                    }
+                }
+
+                // Naplní seznam daty
+                foreach (Rezervace r in rezervovaneCasy)
+                {
+                    listBoxRezervaceSeznamRezervaci.Items.Add(new ListBoxItem($"{r.RezervaceOd.ToShortDateString()} - {r.RezervaceDo.ToShortDateString()}", r.Id));
+                }
+
+                // Vybere první hodnotu a povolí přidružené ovládání
+                listBoxRezervaceSeznamRezervaci.SelectedIndex = 0;
+            }
+            else
+            {
+                // Pokud nebylo zvoleno jedno vozidlo zakáže seznam rezervací a přidružené ovládání
+                listBoxRezervaceSeznamRezervaci.Enabled = false;
+                listBoxRezervaceSeznamRezervaci_SelectedIndexChanged(sender, e);
             }
         }
 
         // Odemyká a zamyká možnosti a zobrazuje podrobnosti, pokud je vybrána nějaká rezervace
-        private void listViewRezervaceSeznamRezervaci_SelectedIndexChanged(object sender, EventArgs e)
+        private void listBoxRezervaceSeznamRezervaci_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (checkedListBoxRezervaceSeznamRezervaci.SelectedItems.Count != 0 && checkedListBoxRezervaceSeznamRezervaci.Enabled)
+            if (listBoxRezervaceSeznamRezervaci.SelectedIndex != -1 && listBoxRezervaceSeznamRezervaci.Enabled)
             {
+                // Načte si z databáze všechny potřebné informace
+                Rezervace rezervace = SpravceDatabaze.Prikaz.Find<Rezervace>(((ListBoxItem)listBoxRezervaceSeznamRezervaci.SelectedItem).Tag);
+                Uzivatele uzivatel = SpravceDatabaze.Prikaz.Find<Uzivatele>(rezervace.IdUzivatele);
+                Vozidla vozidlo = SpravceDatabaze.Prikaz.Find<Vozidla>(rezervace.IdVozidla);
+
+                //Nastaví údaje do polí s detaily
+                listBoxRezervaceSeznamUzivatelu.SelectedIndex = listBoxRezervaceSeznamUzivatelu.FindStringExact(uzivatel.ToString());
+                treeViewRezervaceSeznamVozidel.SelectedNode = treeViewRezervaceSeznamVozidel.Nodes.Find(vozidlo.Id.ToString(), true)[0];
+                dateTimePickerRezervaceRezervaceOdDatum.Value = rezervace.RezervaceOd;
+                dateTimePickerRezervaceRezervaceDoDatum.Value = rezervace.RezervaceDo;
+                dateTimePickerRezervaceRezervaceOdCas.Value = rezervace.RezervaceOd;
+                dateTimePickerRezervaceRezervaceDoCas.Value = rezervace.RezervaceDo;
+
+                // Pokud je čas jiný než default, tak zaškrtne custom čas
+                if (rezervace.RezervaceOd.TimeOfDay != new DateTime(1, 1, 1, 0, 0, 0).TimeOfDay)
+                {
+                    dateTimePickerRezervaceRezervaceOdCas.Checked = true;
+
+                }
+                else
+                {
+                    dateTimePickerRezervaceRezervaceOdCas.Checked = false;
+                }
+                if (rezervace.RezervaceDo.TimeOfDay != new DateTime(1, 1, 1, 23, 59, 59).TimeOfDay)
+                {
+                    dateTimePickerRezervaceRezervaceDoCas.Checked = true;
+
+                }
+                else
+                {
+                    dateTimePickerRezervaceRezervaceDoCas.Checked = false;
+                }
+
+                //Odemkne doprovodná tlačítka
                 buttonRezervaceUpravit.Enabled = true;
-                buttonRezervaceOdebratRezervaci.Enabled = true;
-
-
-
+                buttonRezervaceOdebrat.Enabled = true;
             }
             else
             {
+                // Zamkne dobrovolná tlačítka, pokud není vybraná rezervace
                 buttonRezervaceUpravit.Enabled = false;
-                buttonRezervaceOdebratRezervaci.Enabled = false;
+                buttonRezervaceOdebrat.Enabled = false;
             }
         }
 
         // Připraví panel pro zápis nové rezervace
         private void buttonRezervacePridatRezervaci_Click(object sender, EventArgs e)
         {
-            rezervaceUpravitRezervaci = false;
             RezervaceOdemknoutZamknoutFormular(sender);
+
+            // Vyresetuje hodnoty detailu
+            listBoxRezervaceSeznamUzivatelu.SelectedItem = null;
+            treeViewRezervaceSeznamVozidel.SelectedNode = null;
+            dateTimePickerRezervaceRezervaceOdDatum.Value = DateTime.Now;
+            dateTimePickerRezervaceRezervaceOdCas.Value = DateTime.Now;
+            dateTimePickerRezervaceRezervaceOdCas.Checked = false;
+            dateTimePickerRezervaceRezervaceDoDatum.Value = DateTime.Now;
+            dateTimePickerRezervaceRezervaceDoCas.Value = DateTime.Now;
+            dateTimePickerRezervaceRezervaceDoCas.Checked = false;
         }
 
         // Připraví panel pro úpravu vybrané rezervace
         private void buttonRezervaceUpravit_Click(object sender, EventArgs e)
         {
-            rezervaceUpravitRezervaci = true;
             RezervaceOdemknoutZamknoutFormular(sender);
         }
 
         // Odstraní vybranou rezervaci
         private void buttonRezervaceOdebratRezervaci_Click(object sender, EventArgs e)
         {
-            Rezervace rezervace = SpravceDatabaze.Prikaz.Find<Rezervace>(((CheckedListBoxItem)checkedListBoxRezervaceSeznamRezervaci.SelectedItems[0]).Tag);
+            // Načte zvolenou rezervaci a zobrazí výzvu k potvrzení operace
+            Rezervace rezervace = SpravceDatabaze.Prikaz.Find<Rezervace>(((ListBoxItem)listBoxRezervaceSeznamRezervaci.SelectedItem).Tag);
             DialogResult result = MessageBox.Show(
                 $"Opravu chcete odstranit rezervaci {rezervace.RezervaceOd} - {rezervace.RezervaceDo}?",
                 "Odstranit rezervaci",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Information);
 
+            // Pokud uživatel operaci potvrdí, tak rezervaci odstraní
             if (result == DialogResult.Yes)
             {
                 SpravceDatabaze.Prikaz.Delete<Rezervace>(rezervace.Id);
@@ -766,6 +1021,26 @@ namespace VozovyPark
         {
             RezervaceNacistDatabazi();
         }
+        // V případě změny řazení rezervací aktualizuje seznamy
+        private void radioButtonRezervacePodleVozidel_CheckedChanged(object sender, EventArgs e)
+        {
+            RezervaceNacistDatabazi();
+        }
+
+        // Zařizuje vyhledávání uživatelů
+        private void textBoxRezervaceUzivatel_TextChanged(object sender, EventArgs e)
+        {
+            int index = listBoxRezervaceSeznamUzivatelu.FindString(textBoxRezervaceUzivatel.Text);
+
+            if (index != -1)
+            {
+                listBoxRezervaceSeznamUzivatelu.SelectedIndex = index;
+            }
+            else
+            {
+                Oznameni("Uživatel nebyl nalezen!");
+            }
+        }
 
         // Uloží novou nebo upravenou rezervaci
         private void buttonRezervacePotvrdit_Click(object sender, EventArgs e)
@@ -774,9 +1049,10 @@ namespace VozovyPark
             Rezervace novaRezervace = new Rezervace();
             bool bezProblemu = true;
 
-            if (listViewRezervaceSeznamUzivatelu.SelectedItems.Count != 0)
+            // Kontrola a načtení vybraného uživatele
+            if (listBoxRezervaceSeznamUzivatelu.SelectedItems.Count != 0)
             {
-                novaRezervace.IdUzivatele = (int)listViewRezervaceSeznamUzivatelu.SelectedItems[0].Tag;
+                novaRezervace.IdUzivatele = ((ListBoxItem)listBoxRezervaceSeznamUzivatelu.SelectedItem).Tag;
             }
             else
             {
@@ -784,6 +1060,7 @@ namespace VozovyPark
                 Oznameni("Nebyl vybrán uživatel!");
             }
 
+            // Kontrola a načtení vybraného vozidla
             if (treeViewRezervaceSeznamVozidel.SelectedNode != null && treeViewRezervaceSeznamVozidel.SelectedNode.Level == 3)
             {
                 novaRezervace.IdVozidla = (int)treeViewRezervaceSeznamVozidel.SelectedNode.Tag;
@@ -794,6 +1071,7 @@ namespace VozovyPark
                 Oznameni("Nebyla vybrána SPZ vozidla!");
             }
 
+            // Načtení data a případného času začátku rezervace
             DateTime casOd = dateTimePickerRezervaceRezervaceOdDatum.Value;
             if (dateTimePickerRezervaceRezervaceOdCas.Checked)
             {
@@ -804,6 +1082,7 @@ namespace VozovyPark
                 casOd = casOd.Date + new DateTime(1, 1, 1, 0, 0, 0).TimeOfDay;
             }
 
+            // Načtení data a případného času konce rezervace
             DateTime casDo = dateTimePickerRezervaceRezervaceDoDatum.Value;
             if (dateTimePickerRezervaceRezervaceDoCas.Checked)
             {
@@ -814,6 +1093,7 @@ namespace VozovyPark
                 casDo = casDo.Date + new DateTime(1, 1, 1, 23, 59, 59).TimeOfDay;
             }
 
+            // Kontrola, zda je rezervace validní
             if (casOd < casDo)
             {
                 novaRezervace.RezervaceOd = casOd;
@@ -825,18 +1105,37 @@ namespace VozovyPark
                 Oznameni("Rezervace končí dříve než začíná!");
             }
 
+            // Pokud nebyly nalezeny problémy při načítání hodnot, tak zkontroluje, zda se rezervace nepřekrývá a uloží rezervaci
             if (bezProblemu)
             {
-                if (rezervaceUpravitRezervaci)
+                // Pokud jde o úpravu
+                if ((bool)buttonRezervacePotvrdit.Tag)
                 {
-                    novaRezervace.Id = ((CheckedListBoxItem)checkedListBoxRezervaceSeznamRezervaci.CheckedItems[0]).Tag;
-                    SpravceDatabaze.UpravitZaznam(novaRezervace);
+                    novaRezervace.Id = ((ListBoxItem)listBoxRezervaceSeznamRezervaci.SelectedItem).Tag;
+                    if (SpravceDatabaze.Prikaz.Query<Rezervace>($"SELECT id FROM rezervace WHERE idVozidla = '{novaRezervace.IdVozidla}' AND id != '{novaRezervace.Id}' AND rezervaceDo >= '{novaRezervace.RezervaceOd.Ticks}' AND rezervaceOd <='{novaRezervace.RezervaceDo.Ticks}'").Count == 0)
+                    {
+                        SpravceDatabaze.UpravitZaznam(novaRezervace);
+                    }
+                    else
+                    {
+                        Oznameni("Vozidlo je v tomto termínu již zarezervované!");
+                    }
                 }
                 else
                 {
-                    SpravceDatabaze.PridatZaznam(novaRezervace);
+                    if (SpravceDatabaze.Prikaz.Query<Rezervace>($"SELECT id FROM rezervace WHERE idVozidla = '{novaRezervace.IdVozidla}' AND rezervaceDo >= '{novaRezervace.RezervaceOd.Ticks}' AND rezervaceOd <='{novaRezervace.RezervaceDo.Ticks}'").Count == 0)
+                    {
+                        SpravceDatabaze.PridatZaznam(novaRezervace);
+                    }
+                    else
+                    {
+                        Oznameni("Vozidlo je v tomto termínu již zarezervované!");
+                    }
                 }
+
+                // Poté zamkne detail a aktualizuje hodnoty v seznamech
                 RezervaceOdemknoutZamknoutFormular(sender);
+                RezervaceNacistDatabazi();
             }
         }
 
@@ -844,15 +1143,16 @@ namespace VozovyPark
         private void buttonRezervaceZrusit_Click(object sender, EventArgs e)
         {
             RezervaceOdemknoutZamknoutFormular(sender);
+            treeViewRezervaceSeznamRezervaci_AfterSelect(sender, e);
         }
 
         #endregion
     }
 
-    // Třída, která do checkedListBoxu propašuje tag pro každý item
-    public class CheckedListBoxItem
+    // Třída, která do ListBoxu propašuje tag pro každý item
+    class ListBoxItem
     {
-        public CheckedListBoxItem(string text, int tag)
+        public ListBoxItem(string text, int tag)
         {
             this.Text = text;
             this.Tag = tag;
@@ -881,9 +1181,17 @@ namespace VozovyPark
             this.NutnaZmenaHesla = nutnaZmenaHesla;
             this.Administrator = admin;
         }
+        
         public override string ToString()
         {
-            return "uzivatele";
+            if (Prijmeni == "")
+            {
+                return Jmeno;
+            }
+            else
+            {
+                return $"{Prijmeni.ToUpper()} {Jmeno}";
+            }
         }
 
         [PrimaryKey, AutoIncrement]
@@ -991,25 +1299,22 @@ namespace VozovyPark
     {
         private static SQLiteConnection _db;
 
-        // Připojí se k databázi, pokud neexistuje vytvoří ji a připraví účet administrátora
+        // Připojí se k databázi
         public static bool Inicializovat()
         {
             bool databazeNeexistuje = !System.IO.File.Exists("database.db");
             _db = new SQLiteConnection("database.db");
 
+            // Přidá do databáze tabulky
             _db.CreateTable<Uzivatele>();
             _db.CreateTable<Vozidla>();
             _db.CreateTable<Rezervace>();
             _db.CreateTable<Naklady>();
 
+            // Pokud neexistuje vytvoří ji a připraví účet administrátora
             if (databazeNeexistuje)
             {
-                _db.CreateTable<Uzivatele>();
-                _db.CreateTable<Vozidla>();
-                _db.CreateTable<Rezervace>();
-                _db.CreateTable<Naklady>();
-
-                Uzivatele admin = new Uzivatele("Admin", "", "admin", "admin", DateTime.Now, false, true);
+                Uzivatele admin = new Uzivatele("Admin", "", "admin", "admin", new DateTime(1,1,1), false, true);
                 _db.Insert(admin);
             }
 
@@ -1035,10 +1340,9 @@ namespace VozovyPark
         }
 
         // Najde záznam v databázi
-        public static List<Uzivatele> NajitZaznam(object tabulka)
+        public static List<Uzivatele> SeznamUzivatelu()
         {
-            return _db.Query<Uzivatele>($"SELECT * FROM \'{tabulka}\'");
-            //return _db.Query<object>($"SELECT * FROM \'{tabulka}\'");
+            return _db.Query<Uzivatele>("SELECT id, jmeno, prijmeni FROM uzivatele ORDER BY prijmeni, jmeno");
         }
 
         // Odstraní záznam v databázi
