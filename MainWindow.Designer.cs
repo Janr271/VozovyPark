@@ -472,7 +472,6 @@ namespace VozovyPark
             this.buttonZmenaZrusitHeslo.TabIndex = 4;
             this.buttonZmenaZrusitHeslo.Text = "Zrušit";
             this.buttonZmenaZrusitHeslo.UseVisualStyleBackColor = true;
-            this.buttonZmenaZrusitHeslo.Visible = false;
             // 
             // buttonZmenaPotvrditHeslo
             // 
