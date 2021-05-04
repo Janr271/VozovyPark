@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // sadu atributů. Změnou hodnot těchto atributů se upraví informace
 // přidružené k sestavení.
 [assembly: AssemblyTitle("VozovyPark")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Správa firemního vozového parku.")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Jan Rott")]
 [assembly: AssemblyProduct("VozovyPark")]
 [assembly: AssemblyCopyright("Copyright ©  2021")]
 [assembly: AssemblyTrademark("")]
