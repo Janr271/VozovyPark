@@ -30,6 +30,7 @@ namespace VozovyPark
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             this.panelLogin = new System.Windows.Forms.Panel();
             this.labelLoginNazevPanelu = new System.Windows.Forms.Label();
             this.labelLoginUzivatelskeJmeno = new System.Windows.Forms.Label();
@@ -1916,6 +1917,7 @@ namespace VozovyPark
             this.Controls.Add(this.panelServisVozidla);
             this.Controls.Add(this.panelSpravaRezervaci);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1000, 600);
             this.Name = "MainWindow";
