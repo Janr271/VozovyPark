@@ -75,7 +75,7 @@ namespace VozovyPark
             }
 
             // Provede úpravy zavřeného panelu podle volajícího
-            if (sender == buttonLoginPotvrdit)
+            if (sender == buttonLoginPotvrdit & otevrit == panelZmenaHesla)
             {
                 buttonZmenaZrusitHeslo.Visible = false;
             }
@@ -275,9 +275,9 @@ namespace VozovyPark
         private void AHomeAktualizovatStatistiky()
         {
             // Zjistí hodnoty a zapíše je do nápisů
-            labelAHomeCelkemUzivatelu.Text = "Uživatelů v systému: " + SpravceDatabaze.SeznamUzivatelu().Count;
+            labelAHomeCelkemUzivatelu.Text = "Uživatelů v systému: " + SpravceDatabaze.SeznamUzivatelu(false).Count;
 
-            labelAHomeCelkemVozidel.Text = "Vozidel v systému: " + SpravceDatabaze.SeznamVozidel().Count;
+            labelAHomeCelkemVozidel.Text = "Vozidel v systému: " + SpravceDatabaze.SeznamVozidel(false).Count;
 
             labelAHomeCelkemRezervaci.Text = "Rezervací v systému: " + SpravceDatabaze.SeznamRezervaci().Count;
 
@@ -293,7 +293,7 @@ namespace VozovyPark
             listBoxUHomeSeznamRezervaci.Items.Clear();
 
             // Načíst seznam z databáze
-            List<Rezervace> uHomeSeznamRezervaci = SpravceDatabaze.RezervaceUzivateleVozidla(aktualniUzivatel.Id, true, true);
+            List<Rezervace> uHomeSeznamRezervaci = SpravceDatabaze.RezervaceUzivateleVozidla(aktualniUzivatel.Id, true);
             foreach (Rezervace r in uHomeSeznamRezervaci)
             {
                 listBoxUHomeSeznamRezervaci.Items.Add(new ListBoxItem($"{SpravceDatabaze.NajitVozidlo(r.IdVozidla).SPZ} [{r.RezervaceOd.ToShortDateString()} - {r.RezervaceDo.ToShortDateString()}]", r.Id));
@@ -380,7 +380,7 @@ namespace VozovyPark
             treeViewURezervaceSeznamVozidel.Nodes.Clear();
 
             // Naplní treeView vozidly
-            NaplnitTreeView(treeViewURezervaceSeznamVozidel, SpravceDatabaze.SeznamVozidel());
+            NaplnitTreeView(treeViewURezervaceSeznamVozidel, SpravceDatabaze.SeznamVozidel(true));
             treeViewURezervaceSeznamVozidel_AfterSelect(treeViewURezervaceSeznamVozidel, EventArgs.Empty);
 
             // Pokud je zapnuta úprava rezervace
@@ -459,7 +459,15 @@ namespace VozovyPark
             // Kontrola a načtení vybraného vozidla
             if (treeViewURezervaceSeznamVozidel.SelectedNode != null && treeViewURezervaceSeznamVozidel.SelectedNode.Level == 3)
             {
-                novaRezervace.IdVozidla = (int)treeViewURezervaceSeznamVozidel.SelectedNode.Tag;
+                if ((int)treeViewURezervaceSeznamVozidel.SelectedNode.Tag != 1)
+                {
+                    novaRezervace.IdVozidla = (int)treeViewURezervaceSeznamVozidel.SelectedNode.Tag;
+                }
+                else
+                {
+                    bezProblemu = false;
+                    Oznameni("Není možné vybrat odebrané vozidlo!");
+                }           
             }
             else
             {
@@ -554,7 +562,7 @@ namespace VozovyPark
             listBoxUzivateleSeznamUzivatelu.Items.Clear();
 
             // Najde uživatele v databází a zapíše je do listu
-            foreach (Uzivatele u in SpravceDatabaze.SeznamUzivatelu())
+            foreach (Uzivatele u in SpravceDatabaze.SeznamUzivatelu(false))
             {
                 listBoxUzivateleSeznamUzivatelu.Items.Add(new ListBoxItem(u.ToString(), u.Id));
             }
@@ -820,7 +828,7 @@ namespace VozovyPark
             listBoxVozidlaModel.Items.Clear();
 
             // Načíst seznam z databáze
-            List<Vozidla> vozidlaSeznamVozidel = SpravceDatabaze.SeznamVozidel();
+            List<Vozidla> vozidlaSeznamVozidel = SpravceDatabaze.SeznamVozidel(false);
 
             NaplnitTreeView(treeViewVozidlaSeznamVozidel, vozidlaSeznamVozidel); // Naplní TreeView seznamem
             TreeViewVozidlaSeznamVozidel_AfterSelect(treeViewURezervaceSeznamVozidel, EventArgs.Empty);
@@ -1074,8 +1082,8 @@ namespace VozovyPark
             listBoxRezervaceSeznamRezervaci.Items.Clear();
 
             // Načíst seznam z databáze
-            List<Uzivatele> rezervaceSeznamUzivatelu = SpravceDatabaze.SeznamUzivatelu();
-            List<Vozidla> rezervaceSeznamVozidel = SpravceDatabaze.SeznamVozidel();
+            List<Uzivatele> rezervaceSeznamUzivatelu = SpravceDatabaze.SeznamUzivatelu(true);
+            List<Vozidla> rezervaceSeznamVozidel = SpravceDatabaze.SeznamVozidel(true);
 
             //Načte do hlavního seznamu vozidla nebo uživatele
             if (radioButtonRezervacePodleVozidel.Checked)
@@ -1336,7 +1344,15 @@ namespace VozovyPark
             // Kontrola a načtení vybraného vozidla
             if (treeViewRezervaceSeznamVozidel.SelectedNode != null && treeViewRezervaceSeznamVozidel.SelectedNode.Level == 3)
             {
-                novaRezervace.IdVozidla = (int)treeViewRezervaceSeznamVozidel.SelectedNode.Tag;
+                if((int)treeViewRezervaceSeznamVozidel.SelectedNode.Tag != 1)
+                {
+                    novaRezervace.IdVozidla = (int)treeViewRezervaceSeznamVozidel.SelectedNode.Tag;
+                }
+                else
+                {
+                    bezProblemu = false;
+                    Oznameni("Není možné vybrat odebrané vozidlo!");
+                }
             }
             else
             {
@@ -1829,7 +1845,7 @@ namespace VozovyPark
             {
                 _db.Insert(new Uzivatele("Admin", "", "admin", "admin", new DateTime(1, 1, 1), false, true, false));
                 _db.Insert(new Uzivatele("[Odebraný uživatel]", "", "", "", new DateTime(1, 1, 1), false, false, true));
-                _db.Insert(new Vozidla("[Odebrané vozidlo]", "", "", "", 0, true));
+                _db.Insert(new Vozidla("[Odebrané vozidlo]", "[Odebraný výrobce]", "[Odebraný model]", "[Odebraný typ]", 0, true));
             }
 
             return true;
@@ -1878,15 +1894,30 @@ namespace VozovyPark
         }
 
         // Najde seznam uživatelů v databázi
-        public static List<Uzivatele> SeznamUzivatelu()
+        public static List<Uzivatele> SeznamUzivatelu(bool odstraneni)
         {
-            return _db.Query<Uzivatele>("SELECT id, jmeno, prijmeni FROM uzivatele WHERE odebrany != true ORDER BY prijmeni, jmeno");
+            if (odstraneni)
+            {
+                return _db.Query<Uzivatele>("SELECT id, jmeno, prijmeni FROM uzivatele ORDER BY prijmeni, jmeno");
+            }
+            else
+            {
+                return _db.Query<Uzivatele>("SELECT id, jmeno, prijmeni FROM uzivatele WHERE odebrany != true ORDER BY prijmeni, jmeno");
+            }
+
         }
 
         // Najde seznam vozidel v databázi
-        public static List<Vozidla> SeznamVozidel()
+        public static List<Vozidla> SeznamVozidel(bool odstranene)
         {
-            return _db.Query<Vozidla>("SELECT id, typ, vyrobce, model, spz FROM vozidla WHERE odebrano != true ORDER BY typ, vyrobce, model, spz");
+            if (odstranene)
+            {
+                return _db.Query<Vozidla>("SELECT id, typ, vyrobce, model, spz FROM vozidla ORDER BY typ, vyrobce, model, spz");
+            }
+            else
+            {
+                return _db.Query<Vozidla>("SELECT id, typ, vyrobce, model, spz FROM vozidla WHERE odebrano != true ORDER BY typ, vyrobce, model, spz");
+            }
         }
 
         // Najde seznam rezervaci v databázi
@@ -1908,28 +1939,28 @@ namespace VozovyPark
         }
 
         // Najde rezervace zvoleného uživatele nebo vozidla
-        public static List<Rezervace> RezervaceUzivateleVozidla(int id, bool podleUzivatele, bool pouzeBudouci = true)
+        public static List<Rezervace> RezervaceUzivateleVozidla(int id, bool podleUzivatele, bool zobrazitPredchozi = false)
         {
             if (podleUzivatele)
             {
-                if (pouzeBudouci)
+                if (zobrazitPredchozi)
                 {
-                    return _db.Query<Rezervace>($"SELECT * FROM rezervace WHERE idUzivatele = '{id}' AND rezervaceDo > '{DateTime.Now.Ticks}' ORDER BY rezervaceOd");
+                    return _db.Query<Rezervace>($"SELECT * FROM rezervace WHERE idUzivatele = '{id}' ORDER BY rezervaceOd");
                 }
                 else
                 {
-                    return _db.Query<Rezervace>($"SELECT * FROM rezervace WHERE idUzivatele = '{id}' ORDER BY rezervaceOd");
+                    return _db.Query<Rezervace>($"SELECT * FROM rezervace WHERE idUzivatele = '{id}' AND rezervaceDo > '{DateTime.Now.Ticks}' ORDER BY rezervaceOd");
                 }
             }
             else
             {
-                if (pouzeBudouci)
+                if (zobrazitPredchozi)
                 {
-                    return _db.Query<Rezervace>($"SELECT * FROM rezervace WHERE idVozidla = '{id}' AND rezervaceDo > '{DateTime.Now.Ticks}' ORDER BY rezervaceOd");
+                    return _db.Query<Rezervace>($"SELECT * FROM rezervace WHERE idVozidla = '{id}' ORDER BY rezervaceOd");
                 }
                 else
                 {
-                    return _db.Query<Rezervace>($"SELECT * FROM rezervace WHERE idVozidla = '{id}' ORDER BY rezervaceOd");
+                    return _db.Query<Rezervace>($"SELECT * FROM rezervace WHERE idVozidla = '{id}' AND rezervaceDo > '{DateTime.Now.Ticks}' ORDER BY rezervaceOd");
                 }
             }
         }
@@ -1941,31 +1972,29 @@ namespace VozovyPark
         }
 
         // Najde uzivatele s rezervacemi
-        public static List<Uzivatele> ListRezervovanychUzivatelu(bool pouzeBudouci = true)
+        public static List<Uzivatele> ListRezervovanychUzivatelu(bool zobrazitPredchozi = false)
         {
-
-            if (pouzeBudouci)
+            if (zobrazitPredchozi)
             {
-                return _db.Query<Uzivatele>($"SELECT DISTINCT uzivatele.id, jmeno, prijmeni, administrator FROM uzivatele, rezervace WHERE rezervace.rezervaceDo > '{DateTime.Now.Ticks}' AND uzivatele.id = rezervace.idUzivatele ORDER BY administrator, prijmeni, jmeno");
+                return _db.Query<Uzivatele>($"SELECT DISTINCT uzivatele.id, jmeno, prijmeni, administrator FROM uzivatele, rezervace WHERE uzivatele.id = rezervace.idUzivatele ORDER BY administrator, prijmeni, jmeno");
             }
             else
             {
-                return _db.Query<Uzivatele>($"SELECT DISTINCT uzivatele.id, jmeno, prijmeni, administrator FROM uzivatele, rezervace WHERE uzivatele.id = rezervace.idUzivatele ORDER BY administrator, prijmeni, jmeno");
+                return _db.Query<Uzivatele>($"SELECT DISTINCT uzivatele.id, jmeno, prijmeni, administrator FROM uzivatele, rezervace WHERE rezervace.rezervaceDo > '{DateTime.Now.Ticks}' AND uzivatele.id = rezervace.idUzivatele ORDER BY administrator, prijmeni, jmeno");
             }
 
         }
 
         // Najde zarezervovaná vozidla
-        public static List<Vozidla> ListRezervovanychVozidel(bool pouzeBudouci = true)
+        public static List<Vozidla> ListRezervovanychVozidel(bool zobrazitPredchozi = false)
         {
-
-            if (pouzeBudouci)
+            if (zobrazitPredchozi)
             {
-                return _db.Query<Vozidla>($"SELECT DISTINCT vozidla.id, typ, vyrobce, model, spz FROM vozidla, rezervace WHERE rezervace.rezervaceDo > '{DateTime.Now.Ticks}' AND vozidla.id = rezervace.idVozidla ORDER BY typ, vyrobce, model, spz");
+                return _db.Query<Vozidla>($"SELECT DISTINCT vozidla.id, typ, vyrobce, model, spz FROM vozidla, rezervace WHERE vozidla.id = rezervace.idVozidla ORDER BY typ, vyrobce, model, spz");
             }
             else
             {
-                return _db.Query<Vozidla>($"SELECT DISTINCT vozidla.id, typ, vyrobce, model, spz FROM vozidla, rezervace WHERE vozidla.id = rezervace.idVozidla ORDER BY typ, vyrobce, model, spz");
+                return _db.Query<Vozidla>($"SELECT DISTINCT vozidla.id, typ, vyrobce, model, spz FROM vozidla, rezervace WHERE rezervace.rezervaceDo > '{DateTime.Now.Ticks}' AND vozidla.id = rezervace.idVozidla ORDER BY typ, vyrobce, model, spz");
             }
         }
 
@@ -2029,7 +2058,7 @@ namespace VozovyPark
                     else
                     {
                         // Pokud rezervace proběhla, tak je přesunuta na ghost uživatele
-                        rezervaceUzivatele[index].IdUzivatele = _db.Query<Uzivatele>("SELECT id FROM uzivatele WHERE odebrany = 'true'")[0].Id;
+                        rezervaceUzivatele[index].IdUzivatele = _db.Query<Uzivatele>("SELECT id FROM uzivatele WHERE odebrany = true")[0].Id;
                         _db.Update(rezervaceUzivatele[index]);
                     }
                 }
@@ -2042,8 +2071,8 @@ namespace VozovyPark
                 for (int index = 0; index < rezervaceVozidla.Count; index++)
                 {
 
-                    // Pokud rezervace je přepsána na ghost vozidlo
-                    rezervaceVozidla[index].IdVozidla = _db.Query<Vozidla>("SELECT id FROM vozidla WHERE odebrano = 'true'")[0].Id;
+                    // Rezervace je přepsána na ghost vozidlo
+                    rezervaceVozidla[index].IdVozidla = _db.Query<Vozidla>("SELECT id FROM vozidla WHERE odebrano = true")[0].Id;
                     _db.Update(rezervaceVozidla[index]);
                 }
             }
