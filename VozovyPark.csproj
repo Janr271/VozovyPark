@@ -136,7 +136,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
-    <Resource Include="packages\sqlite-net-sqlcipher.1.7.335\sqlite-net-sqlcipher.1.7.335.nupkg" />
+    <Resource Include="packages\sqlite-net-sqlcipher.1.7.335\sqlite-net-sqlcipher.1.7.335.nupkg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
